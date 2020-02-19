@@ -6,41 +6,131 @@ body {
 
 /* HEADER */
 
-.header {
-    background-color: rgb(41, 43, 42);
+.header{
+	background-color: #353535;
     height: 7%;
 }
 
-.linkHeader{
-    color: white;
-    padding-right: 7.5%;
-    font-family: 'Roboto', sans-serif;
-    font-size: large;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.linkHeader:hover{
-    text-decoration: none;
-    color: white;
-}
-
-.logoHeader {
+.headerContainer {
     height: 100%;
-    width: 4%;
-    margin-left: 2.5%;
+}
+
+.logo{
+    width: 10%;
+    height: 100%;
+    float: left;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0.5% 0 0.5% 0;
+}
+
+.logo img{
+    width: 40%;
+    height: 100%;
+    display: inline-block;
+    text-align: left;
+    transition: all .2s ease-in-out;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.mainNav{
+    width: 90%;
+    float: left;
+    padding: 1% 0;
+}
+
+.mainNav a{
+	color: #ffffff;
+	font-size: 1.3em;
+	text-decoration: none;
+    transition: all .2s ease-in-out;
+    width: 13%;
+    display: inline-block;
+    text-align: center;
+}
+
+.mainNav a:hover{
+    transform: scale(1.3);
+}
+
+.mainNav a:last-child{
+    color: #fe4918;
+    float: right;
+}
+
+/* HOME CONTENT */
+
+.homeContent {
+    height: 93%;
+    background-image: url('../images/background.jpg');
+    background-size:100% 100%;
+}
+
+.homeImage {
+    height: 45%;
+    vertical-align: middle;
+    text-align: center;
+    padding: 2% 0 2% 0;
+}
+
+.homeImage img {
+    height: 100%;
+    width: 20%;
+    display: inline-block;
+    text-align: left;
+}
+
+.homeDescription {
+    height: 35%;
+    padding: 1% 5%;
+}
+
+.homeDescription p {
+    font-size: 1.8em;
+    color: white;
+}
+
+.homeParticipateButton{
+    height: 20%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.homeParticipateButton button{
+    display: inline-block;
+    text-align: left;
+    background-color: #fe4918;
+    border: #fe4918;
+}
+
+.homeParticipateButton button:hover{
+    background-color: #fe4918;
+    border: #fe4918;
 }
 
 /* FOOTER */
 
 .footer {
-    background-color: rgb(41, 43, 42);
+    background-color: #353535;
     height: 10%;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: larger;
+}
+
+.footerLink {
+    color: #fe4918;
+}
+
+.footerLink:hover {
+    color: #fe4918;
+    text-decoration: none;
 }
 
 
