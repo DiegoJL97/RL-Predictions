@@ -5,16 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MainController {
-	
-	@RequestMapping("/")
-	public String loadHome (Model model) {
-		return "home";
-	}
-	
-	@RequestMapping("/loginPage")
-	public String loadLogin (Model model) {
-		return "login";
+public class LoginController {
+
+	@RequestMapping("/registerPage")
+	public String loadRegister (Model model) {
+		return "register";
 	}
 
 }
