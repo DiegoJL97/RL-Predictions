@@ -18,11 +18,18 @@
 					<img src="images/logo.png" alt="Predictions Logo">
 				</div>
 				<nav class="mainNav">
-					<a href="/">NA Predictions</a>	
-					<a href="/">EU Predictions</a>
-					<a href="/">Leaderboard</a>
-					<a href="/">FAQ's</a>
-					<a href="/loginPage">Login</a>
+					{{#logged}}
+						<a href="/">NA Predictions</a>	
+						<a href="/">EU Predictions</a>
+						<a href="/">Leaderboard</a>
+						<a href="/">FAQ's</a>
+					{{/logged}}
+					{{#logged}}
+						<a href="/logout">Logout</a>
+					{{/logged}}
+					{{^logged}}
+						<a href="/loginPage">Login</a>
+					{{/logged}}
 				</nav>
 			</div>
 		</div>
