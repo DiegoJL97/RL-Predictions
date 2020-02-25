@@ -3,7 +3,6 @@ package diegojl97.rlpredictions.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +18,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-
+	
 	private String username;
 	private String password;
 	
@@ -28,6 +27,15 @@ public class User {
 	
 	public User() {
 		super();
+	}
+	
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = new BCryptPasswordEncoder().encode(password);
+		ArrayList<String> roles = new ArrayList<>();
+		roles.add("ROLE_USER");
+		this.roles = roles;
 	}
 
 	public User(String username, String password, List<String> roles) {

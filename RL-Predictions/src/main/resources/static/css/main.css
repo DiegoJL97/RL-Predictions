@@ -84,11 +84,11 @@ body {
 
 .homeDescription {
     height: 35%;
-    padding: 1% 5%;
+    padding: 2% 10% 1% 10%;
 }
 
 .homeDescription p {
-    font-size: 1.8em;
+    font-size: 2em;
     color: white;
     text-align: center;
 }
@@ -169,6 +169,20 @@ body {
     border-radius: 0 0 10px 10px;
 }
 
+.errorFooter {
+    background-color: #353535;
+    border-top: 1px solid red;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.errorFooter p {
+    color: red;
+    font-size: 1.3em;
+}
+
 .loginForm {
     padding-top: 5%;
 }
@@ -238,16 +252,16 @@ input[type=text]:placeholder, input[type=password]:placeholder {
     color: #cccccc;
 }
 
-.fadeInDown {
-    -webkit-animation-name: fadeInDown;
-    animation-name: fadeInDown;
+.fadeInLoginModalDown {
+    -webkit-animation-name: fadeInLoginModalDown;
+    animation-name: fadeInLoginModalDown;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
   
-@-webkit-keyframes fadeInDown {
+@-webkit-keyframes fadeInLoginModalDown {
     0% {
       opacity: 0;
       -webkit-transform: translate3d(0, -100%, 0);
@@ -260,7 +274,7 @@ input[type=text]:placeholder, input[type=password]:placeholder {
     }
 }
   
-@keyframes fadeInDown {
+@keyframes fadeInLoginModalDown {
     0% {
       opacity: 0;
       -webkit-transform: translate3d(0, -100%, 0);
@@ -273,15 +287,15 @@ input[type=text]:placeholder, input[type=password]:placeholder {
     }
 }
 
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-webkit-keyframes fadeInLoginModal { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeInLoginModal { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeInLoginModal { from { opacity:0; } to { opacity:1; } }
   
-.fadeIn {
+.fadeInLoginModal {
     opacity:0;
-    -webkit-animation:fadeIn ease-in 1;
-    -moz-animation:fadeIn ease-in 1;
-    animation:fadeIn ease-in 1;
+    -webkit-animation:fadeInLoginModal ease-in 1;
+    -moz-animation:fadeInLoginModal ease-in 1;
+    animation:fadeInLoginModal ease-in 1;
   
     -webkit-animation-fill-mode:forwards;
     -moz-animation-fill-mode:forwards;
@@ -292,26 +306,31 @@ input[type=text]:placeholder, input[type=password]:placeholder {
     animation-duration:1s;
     padding-top: 5%;
 }
+
+.fadeInLoginModal h2{
+    color: #FA7E0A;
+    font-size: 3.5em;
+}
   
-.fadeIn.first {
+.fadeInLoginModal.first {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;
     animation-delay: 0.4s;
 }
   
-.fadeIn.second {
+.fadeInLoginModal.second {
     -webkit-animation-delay: 0.6s;
     -moz-animation-delay: 0.6s;
     animation-delay: 0.6s;
 }
   
-.fadeIn.third {
+.fadeInLoginModal.third {
     -webkit-animation-delay: 0.8s;
     -moz-animation-delay: 0.8s;
     animation-delay: 0.8s;
 }
   
-.fadeIn.fourth {
+.fadeInLoginModal.fourth {
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
     animation-delay: 1s;

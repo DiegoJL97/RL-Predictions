@@ -1,15 +1,20 @@
 {{>header}}
 		<div class="homeContent">
-			<div class="wrapper fadeInDown">
+			<div class="wrapper fadeInLoginModalDown">
   				<div id="formContent">
-    				<div class="fadeIn first">
-      					<img src="images/logo.png" id="icon" alt="Predictions Logo" />
+    				<div class="fadeInLoginModal first">
+						<h2>Sign up</h2>
     				</div>
-   					<form class="loginForm">
-      					<input type="text" id="login" class="fadeIn second" name="user" placeholder="Username">
-      					<input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
-     					<input type="submit" class="fadeIn fourth" value="Confirm">
+   					<form class="loginForm" action="/registerPage" method="POST">
+      					<input type="text" id="login" class="fadeInLoginModal second" name="username" placeholder="Username">
+      					<input type="password" id="password" class="fadeInLoginModal third" name="password" placeholder="Password">
+     					<input type="submit" class="fadeInLoginModal fourth" value="Confirm">
     				</form>
+					{{#error}}
+					<div class="errorFooter">
+						<p>{{error}}</p>
+					</div>
+					{{/error}}
  				</div>
 			</div>	
 		</div>
