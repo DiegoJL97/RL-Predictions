@@ -368,4 +368,44 @@ input[type=text]:placeholder, input[type=password]:placeholder {
     width:60%;
 }
 
+/* CHOOSE LEAGUE */
 
+.descriptionChoose {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.descriptionChoose p {
+    font-size: 3em;
+    color: white;
+    text-align: center;
+}
+
+.imagesChoose {
+    height: 50%;
+}
+
+.leagueChoose {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.leagueChoose a img {
+    height: 100%;
+    transition: all .2s ease-in-out;
+}
+
+.leagueChoose a img:hover{
+    transform: scale(1.1);
+}
+
+.marginRight {
+    margin-right: 20%;
+}
+
+.marginLeft {
+    margin-left: 20%;
+}
