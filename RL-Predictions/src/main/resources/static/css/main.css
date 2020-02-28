@@ -409,3 +409,9 @@ input[type=text]:placeholder, input[type=password]:placeholder {
 .marginLeft {
     margin-left: 20%;
 }
+
+/* PREDICTIONS */
+
+.white {
+    color: white;
+}
