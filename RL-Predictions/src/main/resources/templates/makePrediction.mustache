@@ -1,9 +1,25 @@
 {{>header}}
 		<div class="homeContent">
-			<ul id="teams">
-			{{#teams}}
-				<li class="white">{{teamName}}</li>
-			{{/teams}}
-			</ul>
+			<div class="leaguePredictionDescription">
+				<p>Choose the league you want to make predictions for!</p>
+			</div>
+			<div class="leagueForm">
+				<form action="/makePrediction" method="post" class="clearfix">
+					<div class="leaguePredictionOl">
+						<ol class="teams list-group">
+						{{#teams}}
+							<li class="list-group-item d-flex justify-content-between align-items-center clearfix">
+								<input type="hidden" value="{{teamName}}" name="liContent">
+								<img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
+								{{teamName}}
+							</li> 
+						{{/teams}}
+						</ol>
+					</div>
+					<div class="sendLeagueFormButton">
+						<input type="submit">
+					</div>
+				</form>
+			</div>
 		</div>
 {{>footer}}

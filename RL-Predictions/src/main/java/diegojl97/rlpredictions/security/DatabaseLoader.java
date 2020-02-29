@@ -91,7 +91,7 @@ public class DatabaseLoader {
 		
 		Team barcelona = new Team("FC Barcelona",euLeague);
 		Team dignitas = new Team("Dignitas",euLeague);
-		Team vitality = new Team("Reeuult Vitality",euLeague);
+		Team vitality = new Team("Renault Vitality",euLeague);
 		Team mouse = new Team("mousesports",euLeague);
 		Team reciprocity = new Team("Team Reciprocity",euLeague);
 		Team veloce = new Team("Veloce Esports",euLeague);

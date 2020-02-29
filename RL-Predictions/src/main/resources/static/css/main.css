@@ -412,6 +412,53 @@ input[type=text]:placeholder, input[type=password]:placeholder {
 
 /* PREDICTIONS */
 
-.white {
+body.dragging, body.dragging * {
+    cursor: move !important;
+  }
+  
+  .dragged {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 2000;
+  }
+
+.leaguePredictionDescription {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaguePredictionDescription p {
+    font-size: 2em;
     color: white;
+    text-align: center;
+}
+
+.leagueForm {
+    height: 50%;
+}
+
+.leaguePredictionOl {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.teams {
+    width: 15%;
+    float: left;
+}
+/*
+.teams li img {
+    padding-right: 5%;
+}
+*/
+.sendLeagueFormButton {
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

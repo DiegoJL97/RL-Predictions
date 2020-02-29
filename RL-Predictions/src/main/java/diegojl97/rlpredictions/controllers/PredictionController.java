@@ -1,8 +1,11 @@
 package diegojl97.rlpredictions.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import diegojl97.rlpredictions.model.League;
@@ -37,5 +40,16 @@ public class PredictionController {
 		return "makePrediction";
 		
 	}
+	
+	@PostMapping(value="/makePrediction")
+	  public String getLiValues(HttpServletRequest request){
+	    String[] liValues = request.getParameterValues("liContent");
+	    int i = 0;
+	    while(i < liValues.length) {
+	    	System.out.println(i+1 + " " + liValues[i]);
+	    	i++;
+	    }
+	    return "home";
+	  }
 
 }

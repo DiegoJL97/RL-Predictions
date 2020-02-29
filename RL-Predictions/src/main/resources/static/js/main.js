@@ -1,0 +1,3 @@
+$(function  () {
+  $("ol.teams").sortable();
+});
