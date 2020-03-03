@@ -450,12 +450,27 @@ body.dragging, body.dragging * {
     width: 15%;
     float: left;
 }
-/*
-.teams li img {
-    padding-right: 5%;
+
+.teams li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-*/
+
+.teams li img {
+    width: 20%;
+    padding-right: 5%;
+    float: left;
+}
+
+.teamNamePrediction {
+    float: left;
+    width: 80%;
+    text-align: center;
+}
+
 .sendLeagueFormButton {
+    height: 10%;
     width: 100%;
     float: left;
     display: flex;

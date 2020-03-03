@@ -57,8 +57,8 @@ public class DatabaseLoader {
 		Team ssg = new Team("Spacestation Gaming",naLeague);
 		Team soniqs = new Team("Susquehanna Soniqs",naLeague);
 		Team flight = new Team("Flight",naLeague);
-		Team g2 = new Team("G2 Esports",naLeague);
-		Team c9 = new Team("Cloud 9",naLeague);
+		Team g2 = new Team("G2",naLeague);
+		Team c9 = new Team("Cloud9",naLeague);
 		naLeague.addTeam(eUnited);
 		naLeague.addTeam(ghostGaming);
 		naLeague.addTeam(nrg);
