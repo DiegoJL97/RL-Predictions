@@ -88,7 +88,6 @@ public class DatabaseLoader {
 			}
 			teamRepository.save(team);
 		}
-		
 		Team barcelona = new Team("FC Barcelona",euLeague);
 		Team dignitas = new Team("Dignitas",euLeague);
 		Team vitality = new Team("Renault Vitality",euLeague);
@@ -120,6 +119,7 @@ public class DatabaseLoader {
 		teamRepository.save(endpoint);
 		teamRepository.save(tsm);
 		teamRepository.save(singularity);
+		/*
 		for(Team team: euLeague.getTeams()) {
 			for(int i=1; i<=3; i++) {
 				Player player = new Player("Player "+i,team);
@@ -127,7 +127,107 @@ public class DatabaseLoader {
 				playerRepository.save(player);
 			}
 			teamRepository.save(team);
-		}
+		}*/
+		Player flakes = new Player("Flakes",barcelona);
+		Player ronaky = new Player("Ronaky",barcelona);
+		Player deevo = new Player("Deevo",barcelona);
+		barcelona.addPlayer(flakes);
+		barcelona.addPlayer(ronaky);
+		barcelona.addPlayer(deevo);
+		playerRepository.save(flakes);
+		playerRepository.save(ronaky);
+		playerRepository.save(deevo);
+		teamRepository.save(barcelona);
+		Player violentPanda = new Player("ViolentPanda",dignitas);
+		Player yukeo = new Player("Yukeo",dignitas);
+		Player aztral = new Player("AztraL",dignitas);
+		dignitas.addPlayer(violentPanda);
+		dignitas.addPlayer(yukeo);
+		dignitas.addPlayer(aztral);
+		playerRepository.save(violentPanda);
+		playerRepository.save(yukeo);
+		playerRepository.save(aztral);
+		teamRepository.save(dignitas);
+		Player kaydop = new Player("Kaydop",vitality);
+		Player fairyPeak = new Player("Fairy Peak",vitality);
+		Player alpha = new Player("Alpha64",vitality);
+		vitality.addPlayer(kaydop);
+		vitality.addPlayer(fairyPeak);
+		vitality.addPlayer(alpha);
+		playerRepository.save(kaydop);
+		playerRepository.save(fairyPeak);
+		playerRepository.save(alpha);
+		teamRepository.save(vitality);
+		Player scrub = new Player("Scrub Killa",mouse);
+		Player speed = new Player("Speed",mouse);
+		Player kuxir = new Player("kuxir97",mouse);
+		mouse.addPlayer(scrub);
+		mouse.addPlayer(speed);
+		mouse.addPlayer(kuxir);
+		playerRepository.save(scrub);
+		playerRepository.save(speed);
+		playerRepository.save(kuxir);
+		teamRepository.save(mouse);
+		Player chausette = new Player("Chausette45",reciprocity);
+		Player ferra = new Player("Ferra",reciprocity);
+		Player fruity = new Player("fruity",reciprocity);
+		reciprocity.addPlayer(chausette);
+		reciprocity.addPlayer(ferra);
+		reciprocity.addPlayer(fruity);
+		playerRepository.save(chausette);
+		playerRepository.save(ferra);
+		playerRepository.save(fruity);
+		teamRepository.save(reciprocity);
+		Player freakii = new Player("FreaKii",veloce);
+		Player flame = new Player("FlamE",veloce);
+		Player kassio = new Player("Kassio",veloce);
+		veloce.addPlayer(freakii);
+		veloce.addPlayer(flame);
+		veloce.addPlayer(kassio);
+		playerRepository.save(freakii);
+		playerRepository.save(flame);
+		playerRepository.save(kassio);
+		teamRepository.save(veloce);
+		Player eyeIgnite = new Player("EyeIgnite",monaco);
+		Player extra = new Player("Extra",monaco);
+		Player trigree = new Player("Tigree",monaco);
+		monaco.addPlayer(eyeIgnite);
+		monaco.addPlayer(extra);
+		monaco.addPlayer(trigree);
+		playerRepository.save(eyeIgnite);
+		playerRepository.save(extra);
+		playerRepository.save(trigree);
+		teamRepository.save(monaco);
+		Player nachitow = new Player("Nachitow",endpoint);
+		Player virtuoso = new Player("Virtuoso",endpoint);
+		Player relatingWave = new Player("RelatingWave",endpoint);
+		endpoint.addPlayer(nachitow);
+		endpoint.addPlayer(virtuoso);
+		endpoint.addPlayer(relatingWave);
+		playerRepository.save(nachitow);
+		playerRepository.save(virtuoso);
+		playerRepository.save(relatingWave);
+		teamRepository.save(endpoint);
+		Player mognus = new Player("Mognus",tsm);
+		Player metsanaurius = new Player("Metsanaurius",tsm);
+		Player remkoe = new Player("remkoe",tsm);
+		tsm.addPlayer(mognus);
+		tsm.addPlayer(metsanaurius);
+		tsm.addPlayer(remkoe);
+		playerRepository.save(mognus);
+		playerRepository.save(metsanaurius);
+		playerRepository.save(remkoe);
+		teamRepository.save(tsm);
+		Player godsmilla = new Player("Godsmilla",singularity);
+		Player noly = new Player("noly",singularity);
+		Player tho = new Player("Tho",singularity);
+		singularity.addPlayer(godsmilla);
+		singularity.addPlayer(noly);
+		singularity.addPlayer(tho);
+		playerRepository.save(godsmilla);
+		playerRepository.save(noly);
+		playerRepository.save(tho);
+		teamRepository.save(singularity);
 		
 	}
 

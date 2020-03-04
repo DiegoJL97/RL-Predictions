@@ -14,9 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import diegojl97.rlpredictions.model.League;
 import diegojl97.rlpredictions.model.Player;
+import diegojl97.rlpredictions.model.Prediction;
 import diegojl97.rlpredictions.model.Team;
 import diegojl97.rlpredictions.model.User;
 import diegojl97.rlpredictions.repositories.LeagueRepository;
+import diegojl97.rlpredictions.repositories.PlayerRepository;
+import diegojl97.rlpredictions.repositories.PredictionRepository;
+import diegojl97.rlpredictions.repositories.TeamRepository;
+import diegojl97.rlpredictions.repositories.UserRepository;
 import diegojl97.rlpredictions.security.UserSessionInfoComponent;
 
 @Controller
@@ -26,7 +31,19 @@ public class PredictionController {
 	private UserSessionInfoComponent userSession;
 	
 	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
 	private LeagueRepository leagueRepository;
+	
+	@Autowired
+	private TeamRepository teamRepository;
+	
+	@Autowired
+	private PlayerRepository playerRepository;
+	
+	@Autowired
+	private PredictionRepository predictionRepository;
 	
 	@RequestMapping("/napredictions")
 	public String loadNAPredictions(Model model) {
@@ -68,15 +85,31 @@ public class PredictionController {
 	  public String getLiValues(HttpServletRequest request, @RequestParam(name = "league") String league, @RequestParam(name = "savior") String savior, @RequestParam(name = "clutch") String clutch, @RequestParam(name = "striker") String striker){
 		User user = userSession.getLoggedUser();
 	    String[] liValues = request.getParameterValues("liContent");
-	    System.out.println(league);
+	    ArrayList<Team> leaguePrediction = new ArrayList<>();
 	    int i = 0;
 	    while(i < liValues.length) {
-	    	System.out.println(i+1 + " " + liValues[i]);
+	    	Team team = teamRepository.findByTeamName(liValues[i]);
+	    	leaguePrediction.add(team);
 	    	i++;
 	    }
-	    System.out.println("SAVIOR : "+savior);
-	    System.out.println("CLUTCH : "+clutch);
-	    System.out.println("STRIKER : "+striker);
+	    Player saviorPlayer = playerRepository.findByPlayerName(savior);
+	    Player clutchPlayer = playerRepository.findByPlayerName(clutch);
+	    Player strikerPlayer = playerRepository.findByPlayerName(striker);
+	    Prediction prediction = new Prediction(leaguePrediction,saviorPlayer,clutchPlayer,strikerPlayer);
+	    switch(league) {
+	    	case "NA":
+	    		user.setMadeNAPrediction(true);
+	    		user.setNaPrediction(prediction);
+	    		break;
+	    	case "EU":
+	    		user.setMadeEUPrediction(true);
+	    		user.setEuPrediction(prediction);
+	    		break;
+	    	default:
+	    		break;
+	    }
+	    userSession.setLoggedUser(user);
+	    userRepository.save(user);
 	    return "home";
 	  }
 

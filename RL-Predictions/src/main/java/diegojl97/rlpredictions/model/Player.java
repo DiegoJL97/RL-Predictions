@@ -1,10 +1,11 @@
 package diegojl97.rlpredictions.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Player {
@@ -15,7 +16,7 @@ public class Player {
 	
 	private String playerName;
 	
-	@ManyToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	private Team team;
 	
 	protected Player() {
