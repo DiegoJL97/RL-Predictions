@@ -6,23 +6,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import diegojl97.rlpredictions.model.User;
 import diegojl97.rlpredictions.repositories.UserRepository;
+import diegojl97.rlpredictions.security.UserSessionInfoComponent;
 
 @Controller
-public class LoginController {
+public class LoginAndRegisterController {
+	
+	@Autowired
+	private UserSessionInfoComponent userSession;
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@RequestMapping("/login")
+	public String loadLogin (Model model) {
+		model.addAttribute("logged", userSession.getLoggedUser());
+		return "login";
+	}
 
-	@GetMapping("/registerPage")
+	@GetMapping("/register")
 	public String loadRegister (Model model) {
 		return "register";
 	}
 	
-	@PostMapping("/registerPage")
+	@PostMapping("/register")
 	public String createUser (Model model, @RequestParam("username") String username, @RequestParam("password") String password) {
 		if(username == "" || password == "") {
 			String errorNull = "You must complete all the fields";

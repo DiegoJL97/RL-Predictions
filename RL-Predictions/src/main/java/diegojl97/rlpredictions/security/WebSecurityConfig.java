@@ -20,8 +20,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// Public pages
 		http.authorizeRequests().antMatchers("/").permitAll();
-		http.authorizeRequests().antMatchers("/loginPage").permitAll();
-		http.authorizeRequests().antMatchers("/registerPage").permitAll();
+		http.authorizeRequests().antMatchers("/login").permitAll();
+		http.authorizeRequests().antMatchers("/register").permitAll();
 		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/h2-console/**").permitAll();
 
 		// Private pages
@@ -31,10 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/makePredictions").hasAnyRole("USER","ADMIN");
 
 		// Login form
-		http.formLogin().loginPage("/loginPage");
+		http.formLogin().loginPage("/login");
 		http.formLogin().usernameParameter("username");
 		http.formLogin().passwordParameter("password");
-		http.formLogin().failureUrl("/loginPage");
+		http.formLogin().failureUrl("/login");
 
 		// Logout
 		http.logout().logoutUrl("/logout");

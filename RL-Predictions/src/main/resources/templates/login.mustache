@@ -1,19 +1,17 @@
 {{>header}}
-		<div class="homeContent">
 			<div class="wrapper fadeInLoginModalDown">
   				<div id="formContent">
     				<div class="fadeInLoginModal first">
       					<h2>Sign in</h2>
     				</div>
-   					<form class="loginForm" action="/loginPage" method="POST">
+   					<form class="loginForm" action="/login" method="POST">
       					<input type="text" id="username" class="fadeInLoginModal second" name="username" placeholder="Username">
       					<input type="password" id="password" class="fadeInLoginModal third" name="password" placeholder="Password">
      					<input type="submit" class="submitLoginButton fadeInLoginModal fourth" value="Log In">
     				</form>
     				<div id="formFooter">
-      					<a class="underlineHover" href="/registerPage">Sign up</a>
+      					<a class="underlineHover" href="/register">Sign up</a>
     				</div>
  				</div>
 			</div>	
-		</div>
 {{>footer}}

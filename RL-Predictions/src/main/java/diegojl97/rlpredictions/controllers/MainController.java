@@ -19,12 +19,6 @@ public class MainController {
 		return "home";
 	}
 	
-	@RequestMapping("/loginPage")
-	public String loadLogin (Model model) {
-		model.addAttribute("logged", userSession.getLoggedUser());
-		return "login";
-	}
-	
 	@RequestMapping("/chooseLeague")
 	public String chooseLeague(Model model) {
 		model.addAttribute("logged", userSession.getLoggedUser());

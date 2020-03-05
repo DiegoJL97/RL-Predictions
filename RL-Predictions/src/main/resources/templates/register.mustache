@@ -1,11 +1,10 @@
 {{>header}}
-		<div class="homeContent">
 			<div class="wrapper fadeInLoginModalDown">
   				<div id="formContent">
     				<div class="fadeInLoginModal first">
 						<h2>Sign up</h2>
     				</div>
-   					<form class="loginForm" action="/registerPage" method="POST">
+   					<form class="loginForm" action="/register" method="POST">
       					<input type="text" id="login" class="fadeInLoginModal second" name="username" placeholder="Username">
       					<input type="password" id="password" class="fadeInLoginModal third" name="password" placeholder="Password">
      					<input type="submit" class="fadeInLoginModal fourth" value="Confirm">
@@ -17,5 +16,4 @@
 					{{/error}}
  				</div>
 			</div>	
-		</div>
 {{>footer}}

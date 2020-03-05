@@ -24,7 +24,7 @@ public class Team {
 	@ManyToOne
 	private League league;
 	
-	@OneToMany(mappedBy = "team", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
 	private List<Player> players = new ArrayList<>();
 	
 	protected Team() {

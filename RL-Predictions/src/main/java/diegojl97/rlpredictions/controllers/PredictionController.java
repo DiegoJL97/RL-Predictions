@@ -19,7 +19,6 @@ import diegojl97.rlpredictions.model.Team;
 import diegojl97.rlpredictions.model.User;
 import diegojl97.rlpredictions.repositories.LeagueRepository;
 import diegojl97.rlpredictions.repositories.PlayerRepository;
-import diegojl97.rlpredictions.repositories.PredictionRepository;
 import diegojl97.rlpredictions.repositories.TeamRepository;
 import diegojl97.rlpredictions.repositories.UserRepository;
 import diegojl97.rlpredictions.security.UserSessionInfoComponent;
@@ -42,8 +41,8 @@ public class PredictionController {
 	@Autowired
 	private PlayerRepository playerRepository;
 	
-	@Autowired
-	private PredictionRepository predictionRepository;
+	
+	
 	
 	@RequestMapping("/napredictions")
 	public String loadNAPredictions(Model model) {
@@ -82,7 +81,8 @@ public class PredictionController {
 	}
 	
 	@PostMapping(value="/makePrediction")
-	  public String getLiValues(HttpServletRequest request, @RequestParam(name = "league") String league, @RequestParam(name = "savior") String savior, @RequestParam(name = "clutch") String clutch, @RequestParam(name = "striker") String striker){
+	  public String getLiValues(Model model, HttpServletRequest request, @RequestParam(name = "league") String league, @RequestParam(name = "savior") String savior, @RequestParam(name = "clutch") String clutch, @RequestParam(name = "striker") String striker){
+		
 		User user = userSession.getLoggedUser();
 	    String[] liValues = request.getParameterValues("liContent");
 	    ArrayList<Team> leaguePrediction = new ArrayList<>();
@@ -110,7 +110,9 @@ public class PredictionController {
 	    }
 	    userSession.setLoggedUser(user);
 	    userRepository.save(user);
+	    model.addAttribute("logged", userSession.getLoggedUser());
 	    return "home";
+	    
 	  }
 
 }

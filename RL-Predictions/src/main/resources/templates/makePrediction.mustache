@@ -1,6 +1,5 @@
 {{>header}}
-		<div class="homeContent">
-			<div class="leaguePredictionDescription">
+			<div class="leaguePredictionDescription verticalCenter">
 				<p>Choose the league you want to make predictions for!</p>
 			</div>
 			<div class="leagueForm">
@@ -9,7 +8,7 @@
 					<div class="leaguePredictionOl">
 						<ol class="teams list-group">
 						{{#teams}}
-							<li class="list-group-item d-flex justify-content-between align-items-center clearfix">
+							<li class="list-group-item d-flex justify-content-between align-items-center clearfix verticalCenter">
 								<input type="hidden" value="{{teamName}}" name="liContent">
 								<img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
 								<div class="teamNamePrediction">
@@ -48,10 +47,9 @@
 							</select>
 						</div>
 					</div>
-					<div class="sendLeagueFormButton">
+					<div class="sendLeagueFormButton verticalAlign">
 						<input type="submit" value="Make prediction!"/>
 					</div>
 				</form>
 			</div>
-		</div>
 {{>footer}}
