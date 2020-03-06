@@ -48,16 +48,29 @@ public class PredictionController {
 	public String loadNAPredictions(Model model) {
 		
 		model.addAttribute("logged", userSession.getLoggedUser());
-		League naLeague = leagueRepository.findByLeagueName("NA");
-		model.addAttribute("league","NA");
-		model.addAttribute("teams",naLeague.getTeams());
-		List<Player> players = new ArrayList<>();
-		for(Team team: naLeague.getTeams()) {
-			for(Player player: team.getPlayers()) {
-				players.add(player);
+		boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction();
+		model.addAttribute("madeprediction",madePrediction);
+		if(madePrediction) {
+			List<Team> teams = userSession.getLoggedUser().getNaPrediction().getLeaguePrediction();
+			Player savior = userSession.getLoggedUser().getNaPrediction().getSavior();
+			Player clutch = userSession.getLoggedUser().getNaPrediction().getClutch();
+			Player striker = userSession.getLoggedUser().getNaPrediction().getStriker();
+			model.addAttribute("teams",teams);
+			model.addAttribute("savior",savior);
+			model.addAttribute("clutch",clutch);
+			model.addAttribute("striker",striker);
+		} else {
+			League naLeague = leagueRepository.findByLeagueName("NA");
+			model.addAttribute("league","NA");
+			model.addAttribute("teams",naLeague.getTeams());
+			List<Player> players = new ArrayList<>();
+			for(Team team: naLeague.getTeams()) {
+				for(Player player: team.getPlayers()) {
+					players.add(player);
+				}
 			}
+			model.addAttribute("players",players);
 		}
-		model.addAttribute("players",players);
 		return "makePrediction";
 		
 	}
@@ -66,16 +79,31 @@ public class PredictionController {
 	public String loadEUPredictions(Model model) {
 
 		model.addAttribute("logged", userSession.getLoggedUser());
-		League euLeague = leagueRepository.findByLeagueName("EU");
-		model.addAttribute("league","EU");
-		model.addAttribute("teams",euLeague.getTeams());
-		List<Player> players = new ArrayList<>();
-		for(Team team: euLeague.getTeams()) {
-			for(Player player: team.getPlayers()) {
-				players.add(player);
+		boolean madePrediction = userSession.getLoggedUser().isMadeEUPrediction();
+		model.addAttribute("madeprediction",madePrediction);
+		if(madePrediction) {
+			System.out.println("HE HECHO LA PREDICCION");
+			List<Team> teams = userSession.getLoggedUser().getEuPrediction().getLeaguePrediction();
+			Player savior = userSession.getLoggedUser().getEuPrediction().getSavior();
+			Player clutch = userSession.getLoggedUser().getEuPrediction().getClutch();
+			Player striker = userSession.getLoggedUser().getEuPrediction().getStriker();
+			model.addAttribute("teams",teams);
+			model.addAttribute("savior",savior);
+			model.addAttribute("clutch",clutch);
+			model.addAttribute("striker",striker);
+		} else {
+			System.out.println("NO HE HECHO LA PREDICCION");
+			League euLeague = leagueRepository.findByLeagueName("EU");
+			model.addAttribute("league","EU");
+			model.addAttribute("teams",euLeague.getTeams());
+			List<Player> players = new ArrayList<>();
+			for(Team team: euLeague.getTeams()) {
+				for(Player player: team.getPlayers()) {
+					players.add(player);
+				}
 			}
+			model.addAttribute("players",players);
 		}
-		model.addAttribute("players",players);
 		return "makePrediction";
 		
 	}
