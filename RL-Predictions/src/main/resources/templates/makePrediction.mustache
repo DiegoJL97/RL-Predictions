@@ -3,11 +3,13 @@
 				<p>Choose the league you want to make predictions for!</p>
 			</div>
 			<div class="leagueForm">
-				{{#madePrediction}}
+				<form action="/makePrediction" method="post">
+					<input type="hidden" name="league" value="{{league}}">
 					<div class="leaguePredictionOl">
 						<ol class="teams list-group">
 						{{#teams}}
 							<li class="list-group-item d-flex justify-content-between align-items-center clearfix verticalCenter">
+								<input type="hidden" value="{{teamName}}" name="liContent">
 								<img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
 								<div class="teamNamePrediction">
 									{{teamName}}
@@ -20,68 +22,34 @@
 						<div class="onePrediction">
 							<img src="images/save.png" alt="Savior of the season">
 							<p>Savior of the season</p>
-							<p>{{savior.playerName}}</p>
+							<select class="form-control" id="saviorPrediction" name="savior">
+								{{#players}}
+									<option>{{playerName}}</option>
+								{{/players}}
+							</select>
 						</div>
 						<div class="onePrediction">
 							<img src="images/assist.png" alt="Clutch playmaker of the season">
 							<p>Clutch playmaker of the season</p>
-							<p>{{clutch.playerName}}</p>
+							<select class="form-control" id="clutchPrediction" name="clutch">
+								{{#players}}
+									<option>{{playerName}}</option>
+								{{/players}}
+							</select>
+						</div>
 						<div class="onePrediction">
 							<img src="images/goal.png" alt="Golden striker of the season">
 							<p>Golden striker of the season</p>
-							<p>{{striker.playerName}}</p>
+							<select class="form-control" id="strikerPrediction" name="striker">
+								{{#players}}
+									<option>{{playerName}}</option>
+								{{/players}}
+							</select>
 						</div>
 					</div>
-				{{/madePrediction}}
-				{{^madePrediction}}
-					<form action="/makePrediction" method="post">
-						<input type="hidden" name="league" value="{{league}}">
-						<div class="leaguePredictionOl">
-							<ol class="teams list-group">
-							{{#teams}}
-								<li class="list-group-item d-flex justify-content-between align-items-center clearfix verticalCenter">
-									<input type="hidden" value="{{teamName}}" name="liContent">
-									<img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
-									<div class="teamNamePrediction">
-										{{teamName}}
-									</div>
-								</li> 
-							{{/teams}}
-							</ol>
-						</div>
-						<div class="playersPrediction">
-							<div class="onePrediction">
-								<img src="images/save.png" alt="Savior of the season">
-								<p>Savior of the season</p>
-								<select class="form-control" id="saviorPrediction" name="savior">
-									{{#players}}
-										<option>{{playerName}}</option>
-									{{/players}}
-								</select>
-							</div>
-							<div class="onePrediction">
-								<img src="images/assist.png" alt="Clutch playmaker of the season">
-								<p>Clutch playmaker of the season</p>
-								<select class="form-control" id="clutchPrediction" name="clutch">
-									{{#players}}
-										<option>{{playerName}}</option>
-									{{/players}}
-								</select>
-							</div>
-							<div class="onePrediction">
-								<img src="images/goal.png" alt="Golden striker of the season">
-								<p>Golden striker of the season</p>
-								<select class="form-control" id="strikerPrediction" name="striker">
-									{{#players}}
-										<option>{{playerName}}</option>
-									{{/players}}
-								</select>
-							</div>
-						</div>
-						<div class="sendLeagueFormButton verticalAlign">
-							<input type="submit" value="Make prediction!"/>
-						</div>
-					</form>
-				{{/madePrediction}}
+					<div class="sendLeagueFormButton verticalAlign">
+						<input type="submit" value="Make prediction!"/>
+					</div>
+				</form>
 			</div>
 {{>footer}}

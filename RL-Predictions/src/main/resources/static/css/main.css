@@ -505,4 +505,41 @@ body.dragging, body.dragging * {
     margin: 0 auto;
 }
 
+/* PREDICTION SAVED (THANKS) */
+
+.thanksImg {
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding-top: 5%;
+    padding-right: 7%;
+}
+
+.thanksImg img {
+    width: 70%;
+    height: 80%;
+    float: right;
+}
+
+.thanksRight {
+    width: 40%;
+    height: 100%;
+    float: left;
+    padding-top: 12%;
+}
+
+.thanksDescription {
+    color: white;
+    text-align: center;
+}
+
+.thanksDescription h1 {
+    font-size: 3em;
+    margin-bottom: 6%;
+}
+
+.thanksDescription p {
+    font-size: 2em;
+    margin-bottom: 8%;
+}
 

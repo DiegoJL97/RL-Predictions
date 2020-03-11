@@ -48,7 +48,7 @@ public class PredictionController {
 	public String loadNAPredictions(Model model) {
 		
 		model.addAttribute("logged", userSession.getLoggedUser());
-		boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction();
+		/*boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction();
 		model.addAttribute("madeprediction",madePrediction);
 		if(madePrediction) {
 			List<Team> teams = userSession.getLoggedUser().getNaPrediction().getLeaguePrediction();
@@ -59,7 +59,7 @@ public class PredictionController {
 			model.addAttribute("savior",savior);
 			model.addAttribute("clutch",clutch);
 			model.addAttribute("striker",striker);
-		} else {
+		} else { */
 			League naLeague = leagueRepository.findByLeagueName("NA");
 			model.addAttribute("league","NA");
 			model.addAttribute("teams",naLeague.getTeams());
@@ -70,7 +70,7 @@ public class PredictionController {
 				}
 			}
 			model.addAttribute("players",players);
-		}
+		//}
 		return "makePrediction";
 		
 	}
@@ -79,7 +79,7 @@ public class PredictionController {
 	public String loadEUPredictions(Model model) {
 
 		model.addAttribute("logged", userSession.getLoggedUser());
-		boolean madePrediction = userSession.getLoggedUser().isMadeEUPrediction();
+		/*boolean madePrediction = userSession.getLoggedUser().isMadeEUPrediction();
 		model.addAttribute("madeprediction",madePrediction);
 		if(madePrediction) {
 			System.out.println("HE HECHO LA PREDICCION");
@@ -91,8 +91,9 @@ public class PredictionController {
 			model.addAttribute("savior",savior);
 			model.addAttribute("clutch",clutch);
 			model.addAttribute("striker",striker);
+			model.addAttribute("league","EU");
 		} else {
-			System.out.println("NO HE HECHO LA PREDICCION");
+			System.out.println("NO HE HECHO LA PREDICCION");*/
 			League euLeague = leagueRepository.findByLeagueName("EU");
 			model.addAttribute("league","EU");
 			model.addAttribute("teams",euLeague.getTeams());
@@ -103,7 +104,7 @@ public class PredictionController {
 				}
 			}
 			model.addAttribute("players",players);
-		}
+		//}
 		return "makePrediction";
 		
 	}
@@ -139,8 +140,15 @@ public class PredictionController {
 	    userSession.setLoggedUser(user);
 	    userRepository.save(user);
 	    model.addAttribute("logged", userSession.getLoggedUser());
-	    return "home";
+	    return "predictionSaved";
 	    
 	  }
+	
+	@RequestMapping("/goHome")
+	public String goHome(Model model) {
+		model.addAttribute("logged", userSession.getLoggedUser());
+		return "home";
+	}
+	
 
 }
