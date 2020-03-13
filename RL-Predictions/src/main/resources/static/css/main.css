@@ -68,6 +68,12 @@ body {
     background-size:100% 100%;
 }
 
+.homeContentLong {
+    height: 200%;
+    background-image: url('../images/stage.png');
+    background-size: 100% 100%;
+}
+
 .homeImage {
     height: 45%;
     vertical-align: middle;
@@ -423,32 +429,33 @@ body.dragging, body.dragging * {
 }
 
 .leaguePredictionDescription {
-    height: 10%;
+    height: 18%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .leaguePredictionDescription p {
-    font-size: 2em;
+    font-size: 1.8em;
     color: white;
     text-align: center;
 }
 
 .leagueForm {
-    height: 70%;
+    height: 55%;
     text-align: center;
 }
 
 .leaguePredictionOl {
     width: 50%;
-    float: left;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .teams {
-    width: 30%;
-    float: right;
-    margin-right: 15%;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .teams li {
@@ -470,15 +477,15 @@ body.dragging, body.dragging * {
 }
 
 .playersPrediction {
-    width: 50%;
-    float: left;
+    padding-top: 6%;
+    height: 30%;
+    width: 100%;
 }
 
 .onePrediction {
     text-align: center;
-    margin-bottom: 4%;
-    width: 50%;
-    margin-left: 10%;
+    width: 33%;
+    float: left;
 }
 
 .onePrediction p {
@@ -493,7 +500,7 @@ body.dragging, body.dragging * {
 }
 
 .sendLeagueFormButton {
-    height: 20%;
+    height: 9%;
     width: 100%;
     float: left;
     display: flex;

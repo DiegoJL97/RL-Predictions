@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Rocket League Predictions</title>
+		<meta charset="utf-8"/>
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
+		<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
+		<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+		<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src='js/jquery-sortable.js'></script>
+		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<div class="header">  
+			<div class=" headerContainer clearfix">
+				<div class="logo">
+					<img src="images/logo.png" alt="Predictions Logo">
+				</div>
+				<nav class="mainNav">
+					{{#logged}}
+						<a href="/napredictions">NA Predictions</a>	
+						<a href="/eupredictions">EU Predictions</a>
+						<a href="/">Leaderboard</a>
+						<a href="/">FAQ's</a>
+					{{/logged}}
+					{{#logged}}
+						<a href="/logout">Sign out</a>
+					{{/logged}}
+					{{^logged}}
+						<a href="/login">Sign in</a>
+					{{/logged}}
+				</nav>
+			</div>
+		</div>
+		<div class="homeContentLong">

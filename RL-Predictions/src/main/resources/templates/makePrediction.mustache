@@ -1,9 +1,9 @@
-{{>header}}
-			<div class="leaguePredictionDescription verticalCenter">
-				<p>Choose the league you want to make predictions for!</p>
-			</div>
-			<div class="leagueForm">
-				<form action="/makePrediction" method="post">
+{{>headerLong}}
+			<form action="/makePrediction" method="post">
+				<div class="leagueForm">
+					<div class="leaguePredictionDescription verticalCenter">
+						<p>Drag the teams into the positions they will be at the end of the season!</p>
+					</div>
 					<input type="hidden" name="league" value="{{league}}">
 					<div class="leaguePredictionOl">
 						<ol class="teams list-group">
@@ -18,38 +18,41 @@
 						{{/teams}}
 						</ol>
 					</div>
-					<div class="playersPrediction">
-						<div class="onePrediction">
-							<img src="images/save.png" alt="Savior of the season">
-							<p>Savior of the season</p>
-							<select class="form-control" id="saviorPrediction" name="savior">
-								{{#players}}
-									<option>{{playerName}}</option>
-								{{/players}}
-							</select>
-						</div>
-						<div class="onePrediction">
-							<img src="images/assist.png" alt="Clutch playmaker of the season">
-							<p>Clutch playmaker of the season</p>
-							<select class="form-control" id="clutchPrediction" name="clutch">
-								{{#players}}
-									<option>{{playerName}}</option>
-								{{/players}}
-							</select>
-						</div>
-						<div class="onePrediction">
-							<img src="images/goal.png" alt="Golden striker of the season">
-							<p>Golden striker of the season</p>
-							<select class="form-control" id="strikerPrediction" name="striker">
-								{{#players}}
-									<option>{{playerName}}</option>
-								{{/players}}
-							</select>
-						</div>
+				</div>
+				<div class="playersPrediction clearfix">
+					<div class="leaguePredictionDescription verticalCenter">
+						<p>Pick who will be the savior, clutch playmaker and golden striker of the season!</p>
 					</div>
-					<div class="sendLeagueFormButton verticalAlign">
-						<input type="submit" value="Make prediction!"/>
+					<div class="onePrediction">
+						<img src="images/save.png" alt="Savior of the season">
+						<p>Savior of the season</p>
+						<select class="form-control" id="saviorPrediction" name="savior">
+							{{#players}}
+								<option>{{playerName}}</option>
+							{{/players}}
+						</select>
 					</div>
-				</form>
-			</div>
+					<div class="onePrediction">
+						<img src="images/assist.png" alt="Clutch playmaker of the season">
+						<p>Clutch playmaker of the season</p>
+						<select class="form-control" id="clutchPrediction" name="clutch">
+							{{#players}}
+								<option>{{playerName}}</option>
+							{{/players}}
+						</select>
+					</div>
+					<div class="onePrediction">
+						<img src="images/goal.png" alt="Golden striker of the season">
+						<p>Golden striker of the season</p>
+						<select class="form-control" id="strikerPrediction" name="striker">
+							{{#players}}
+								<option>{{playerName}}</option>
+							{{/players}}
+						</select>
+					</div>
+				</div>
+				<div class="sendLeagueFormButton">
+					<input type="submit" value="Make prediction!"/>
+				</div>
+			</form>
 {{>footer}}
