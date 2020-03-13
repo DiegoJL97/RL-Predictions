@@ -8,7 +8,7 @@ body {
 
 .header{
 	background-color: #353535;
-    height: 7%;
+    height: 8%;
 }
 
 .headerContainer {
@@ -42,7 +42,7 @@ body {
 
 .mainNav a{
 	color: #ffffff;
-	font-size: 1.3em;
+	font-size: 120%;
 	text-decoration: none;
     transition: all .2s ease-in-out;
     width: 13%;
@@ -63,7 +63,7 @@ body {
 /* HOME CONTENT */
 
 .homeContent {
-    height: 93%;
+    height: 92%;
     background-image: url('../images/background.jpg');
     background-size:100% 100%;
 }
@@ -83,20 +83,21 @@ body {
 }
 
 .homeDescription {
-    height: 35%;
+    height: 40%;
     padding: 2% 10% 1% 10%;
 }
 
 .homeDescription p {
-    font-size: 2em;
+    font-size: 150%;
     color: white;
     text-align: center;
 }
 
 .homeParticipateButton{
-    height: 20%;
+    height: 15%;
     vertical-align: middle;
     text-align: center;
+    margin-bottom: 0;
 }
 
 .homeParticipateButton button{
@@ -151,8 +152,7 @@ body {
     border-radius: 10px 10px 10px 10px;
     background: #353535;
     padding: 20px;
-    width: 90%;
-    max-width: 550px;
+    width: 35%;
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
