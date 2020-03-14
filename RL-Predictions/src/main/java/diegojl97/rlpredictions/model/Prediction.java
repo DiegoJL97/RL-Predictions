@@ -1,8 +1,6 @@
 package diegojl97.rlpredictions.model;
 
-import java.util.List;
-
-import javax.persistence.ElementCollection;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,8 +15,9 @@ public class Prediction {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@ElementCollection
-	private List<Team> leaguePrediction;
+	@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	private PredictionLeague league;
+	
 	@OneToOne(fetch=FetchType.EAGER)
 	private Player savior;
 	@OneToOne(fetch=FetchType.EAGER)
@@ -30,19 +29,19 @@ public class Prediction {
 		
 	}
 	
-	public Prediction(List<Team> leaguePrediction, Player savior, Player clutch, Player striker) {
-		this.leaguePrediction = leaguePrediction;
+	public Prediction(PredictionLeague league, Player savior, Player clutch, Player striker) {
+		this.league = league;
 		this.savior = savior;
 		this.clutch = clutch;
 		this.striker = striker;
 	}
 
-	public List<Team> getLeaguePrediction() {
-		return leaguePrediction;
+	public PredictionLeague getLeaguePrediction() {
+		return league;
 	}
 
-	public void setLeaguePrediction(List<Team> leaguePrediction) {
-		this.leaguePrediction = leaguePrediction;
+	public void setLeaguePrediction(PredictionLeague league) {
+		this.league = league;
 	}
 
 	public Player getSavior() {

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import diegojl97.rlpredictions.model.League;
 import diegojl97.rlpredictions.model.Player;
 import diegojl97.rlpredictions.model.Prediction;
+import diegojl97.rlpredictions.model.PredictionLeague;
 import diegojl97.rlpredictions.model.Team;
 import diegojl97.rlpredictions.model.User;
 import diegojl97.rlpredictions.repositories.LeagueRepository;
@@ -40,8 +41,6 @@ public class PredictionController {
 	
 	@Autowired
 	private PlayerRepository playerRepository;
-	
-	
 	
 	
 	@RequestMapping("/napredictions")
@@ -114,13 +113,17 @@ public class PredictionController {
 		
 		User user = userSession.getLoggedUser();
 	    String[] liValues = request.getParameterValues("liContent");
-	    ArrayList<Team> leaguePrediction = new ArrayList<>();
-	    int i = 0;
-	    while(i < liValues.length) {
-	    	Team team = teamRepository.findByTeamName(liValues[i]);
-	    	leaguePrediction.add(team);
-	    	i++;
-	    }
+	    PredictionLeague leaguePrediction = new PredictionLeague();
+	    leaguePrediction.setFirst(teamRepository.findByTeamName(liValues[0]));
+	    leaguePrediction.setSecond(teamRepository.findByTeamName(liValues[1]));
+	    leaguePrediction.setThird(teamRepository.findByTeamName(liValues[2]));
+	    leaguePrediction.setFourth(teamRepository.findByTeamName(liValues[3]));
+	    leaguePrediction.setFifth(teamRepository.findByTeamName(liValues[4]));
+	    leaguePrediction.setSixth(teamRepository.findByTeamName(liValues[5]));
+	    leaguePrediction.setSeventh(teamRepository.findByTeamName(liValues[6]));
+	    leaguePrediction.setEighth(teamRepository.findByTeamName(liValues[7]));
+	    leaguePrediction.setNinth(teamRepository.findByTeamName(liValues[8]));
+	    leaguePrediction.setTenth(teamRepository.findByTeamName(liValues[9]));
 	    Player saviorPlayer = playerRepository.findByPlayerName(savior);
 	    Player clutchPlayer = playerRepository.findByPlayerName(clutch);
 	    Player strikerPlayer = playerRepository.findByPlayerName(striker);
