@@ -146,7 +146,7 @@ public class PredictionLeague implements Iterable<Team> {
         private int position = 1;
  
         public boolean hasNext() {
-            return position >= 10;
+            return position < 10;
         }
  
         public Team next() {

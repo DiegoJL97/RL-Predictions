@@ -47,18 +47,21 @@ public class PredictionController {
 	public String loadNAPredictions(Model model) {
 		
 		model.addAttribute("logged", userSession.getLoggedUser());
-		/*boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction();
-		model.addAttribute("madeprediction",madePrediction);
+		boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction();
+		model.addAttribute("madePrediction",madePrediction);
 		if(madePrediction) {
-			List<Team> teams = userSession.getLoggedUser().getNaPrediction().getLeaguePrediction();
+			List<Team> teams = new ArrayList<>();
+			for(Team team: userSession.getLoggedUser().getNaPrediction().getLeaguePrediction()) {
+				teams.add(team);
+			}
 			Player savior = userSession.getLoggedUser().getNaPrediction().getSavior();
 			Player clutch = userSession.getLoggedUser().getNaPrediction().getClutch();
 			Player striker = userSession.getLoggedUser().getNaPrediction().getStriker();
 			model.addAttribute("teams",teams);
-			model.addAttribute("savior",savior);
-			model.addAttribute("clutch",clutch);
-			model.addAttribute("striker",striker);
-		} else { */
+			model.addAttribute("savior",savior.getPlayerName());
+			model.addAttribute("clutch",clutch.getPlayerName());
+			model.addAttribute("striker",striker.getPlayerName());
+		} else {
 			League naLeague = leagueRepository.findByLeagueName("NA");
 			model.addAttribute("league","NA");
 			model.addAttribute("teams",naLeague.getTeams());
@@ -69,7 +72,7 @@ public class PredictionController {
 				}
 			}
 			model.addAttribute("players",players);
-		//}
+		}
 		return "makePrediction";
 		
 	}
@@ -78,21 +81,21 @@ public class PredictionController {
 	public String loadEUPredictions(Model model) {
 
 		model.addAttribute("logged", userSession.getLoggedUser());
-		/*boolean madePrediction = userSession.getLoggedUser().isMadeEUPrediction();
-		model.addAttribute("madeprediction",madePrediction);
+		boolean madePrediction = userSession.getLoggedUser().isMadeEUPrediction();
+		model.addAttribute("madePrediction",madePrediction);
 		if(madePrediction) {
-			System.out.println("HE HECHO LA PREDICCION");
-			List<Team> teams = userSession.getLoggedUser().getEuPrediction().getLeaguePrediction();
+			List<Team> teams = new ArrayList<>();
+			for(Team team: userSession.getLoggedUser().getEuPrediction().getLeaguePrediction()) {
+				teams.add(team);
+			}
 			Player savior = userSession.getLoggedUser().getEuPrediction().getSavior();
 			Player clutch = userSession.getLoggedUser().getEuPrediction().getClutch();
 			Player striker = userSession.getLoggedUser().getEuPrediction().getStriker();
 			model.addAttribute("teams",teams);
-			model.addAttribute("savior",savior);
-			model.addAttribute("clutch",clutch);
-			model.addAttribute("striker",striker);
-			model.addAttribute("league","EU");
+			model.addAttribute("savior",savior.getPlayerName());
+			model.addAttribute("clutch",clutch.getPlayerName());
+			model.addAttribute("striker",striker.getPlayerName());
 		} else {
-			System.out.println("NO HE HECHO LA PREDICCION");*/
 			League euLeague = leagueRepository.findByLeagueName("EU");
 			model.addAttribute("league","EU");
 			model.addAttribute("teams",euLeague.getTeams());
@@ -103,13 +106,13 @@ public class PredictionController {
 				}
 			}
 			model.addAttribute("players",players);
-		//}
+		}
 		return "makePrediction";
 		
 	}
 	
 	@PostMapping(value="/makePrediction")
-	  public String getLiValues(Model model, HttpServletRequest request, @RequestParam(name = "league") String league, @RequestParam(name = "savior") String savior, @RequestParam(name = "clutch") String clutch, @RequestParam(name = "striker") String striker){
+	public String getLiValues(Model model, HttpServletRequest request, @RequestParam(name = "league") String league, @RequestParam(name = "savior") String savior, @RequestParam(name = "clutch") String clutch, @RequestParam(name = "striker") String striker){
 		
 		User user = userSession.getLoggedUser();
 	    String[] liValues = request.getParameterValues("liContent");
@@ -153,5 +156,4 @@ public class PredictionController {
 		return "home";
 	}
 	
-
 }

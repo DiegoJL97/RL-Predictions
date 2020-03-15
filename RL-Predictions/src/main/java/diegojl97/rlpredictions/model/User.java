@@ -35,6 +35,8 @@ public class User {
 	@OneToOne(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	private Prediction euPrediction;
 	
+	private Integer points;
+	
 	public User() {
 		super();
 	}
@@ -48,6 +50,7 @@ public class User {
 		this.roles = roles;
 		this.madeNAPrediction = false;
 		this.madeEUPrediction = false;
+		this.points = 0;
 	}
 
 	public User(String username, String password, List<String> roles) {
@@ -120,6 +123,13 @@ public class User {
 	public void setEuPrediction(Prediction euPrediction) {
 		this.euPrediction = euPrediction;
 	}
-	
+
+	public Integer getPoints() {
+		return points;
+	}
+
+	public void setPoints(Integer points) {
+		this.points = points;
+	}
 	
 }

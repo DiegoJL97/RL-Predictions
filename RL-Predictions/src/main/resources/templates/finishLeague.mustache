@@ -1,0 +1,91 @@
+{{>headerLong}}
+			<form action="/finishLeague" method="post">
+				<div class="leagueForm">
+					<div class="leaguePredictionDescription verticalCenter clearfix">
+						<p>How did the leagues end?</p>
+					</div>
+					<div class="leaguePredictionOlFinish">
+						<ol class="teams list-group">
+						{{#naTeams}}
+							<li class="list-group-item d-flex justify-content-between align-items-center clearfix verticalCenter">
+								<input type="hidden" value="{{teamName}}" name="liContentNA">
+								<img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
+								<div class="teamNamePrediction">
+									{{teamName}}
+								</div>
+							</li> 
+						{{/naTeams}}
+						</ol>
+					</div>
+					<div class="leaguePredictionOlFinish">
+						<ol class="teams list-group">
+						{{#euTeams}}
+							<li class="list-group-item d-flex justify-content-between align-items-center clearfix verticalCenter">
+								<input type="hidden" value="{{teamName}}" name="liContentEU">
+								<img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
+								<div class="teamNamePrediction">
+									{{teamName}}
+								</div>
+							</li> 
+						{{/euTeams}}
+						</ol>
+					</div>
+				</div>
+				<div class="playersPrediction clearfix">
+					<div class="leaguePredictionDescription verticalCenter">
+						<p>Who were the best players?</p>
+					</div>
+					<div class="onePrediction">
+						<img src="images/save.png" alt="Savior of the season">
+						<p>Savior of the season</p>
+						<select class="form-control" id="saviorPrediction" name="saviorNA">
+							{{#naPlayers}}
+								<option>{{playerName}}</option>
+							{{/naPlayers}}
+						</select>
+					</div>
+					<div class="onePrediction">
+						<img src="images/assist.png" alt="Clutch playmaker of the season">
+						<p>Clutch playmaker of the season</p>
+						<select class="form-control" id="clutchPrediction" name="clutchNA">
+							{{#naPlayers}}
+								<option>{{playerName}}</option>
+							{{/naPlayers}}
+						</select>
+					</div>
+					<div class="onePrediction">
+						<img src="images/goal.png" alt="Golden striker of the season">
+						<p>Golden striker of the season</p>
+						<select class="form-control" id="strikerPrediction" name="strikerNA">
+							{{#naPlayers}}
+								<option>{{playerName}}</option>
+							{{/naPlayers}}
+						</select>
+					</div>
+					<div class="onePredictionFinish">
+						<select class="form-control" id="saviorPrediction" name="saviorEU">
+							{{#euPlayers}}
+								<option>{{playerName}}</option>
+							{{/euPlayers}}
+						</select>
+					</div>
+					<div class="onePredictionFinish">
+						<select class="form-control" id="clutchPrediction" name="clutchEU">
+							{{#euPlayers}}
+								<option>{{playerName}}</option>
+							{{/euPlayers}}
+						</select>
+					</div>
+					<div class="onePredictionFinish">
+						<select class="form-control" id="strikerPrediction" name="strikerEU">
+							{{#euPlayers}}
+								<option>{{playerName}}</option>
+							{{/euPlayers}}
+						</select>
+					</div>
+				</div>
+				<div class="sendLeagueFormButton">
+					<input type="submit" value="Finish league!"/>
+				</div>
+			</form>
+{{>footer}}

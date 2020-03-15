@@ -470,6 +470,24 @@ body.dragging, body.dragging * {
     float: left;
 }
 
+.teams2 {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.teams2 li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.teams2 li img {
+    width: 20%;
+    padding-right: 5%;
+    float: left;
+}
+
 .teamNamePrediction {
     float: left;
     width: 80%;
@@ -550,3 +568,28 @@ body.dragging, body.dragging * {
     margin-bottom: 8%;
 }
 
+/* FINISH LEAGUE */
+
+.leaguePredictionOlFinish {
+    width: 50%;
+    float: left;
+    float: left;
+}
+
+.onePredictionFinish {
+    margin-top: 3%;
+    text-align: center;
+    width: 33%;
+    float: left;
+}
+
+.onePredictionFinish p {
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+}
+
+.onePredictionFinish select {
+    width: 30%;
+    display: inline-block;
+}

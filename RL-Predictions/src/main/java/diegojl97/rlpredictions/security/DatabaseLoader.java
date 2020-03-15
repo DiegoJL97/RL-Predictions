@@ -80,14 +80,7 @@ public class DatabaseLoader {
 		teamRepository.save(flight);
 		teamRepository.save(g2);
 		teamRepository.save(c9);
-		for(Team team: naLeague.getTeams()) {
-			for(int i=1; i<=3; i++) {
-				Player player = new Player("Player "+i,team);
-				team.addPlayer(player);
-				playerRepository.save(player);
-			}
-			teamRepository.save(team);
-		}
+
 		Team barcelona = new Team("FC Barcelona",euLeague);
 		Team dignitas = new Team("Dignitas",euLeague);
 		Team vitality = new Team("Renault Vitality",euLeague);
@@ -119,15 +112,7 @@ public class DatabaseLoader {
 		teamRepository.save(endpoint);
 		teamRepository.save(tsm);
 		teamRepository.save(singularity);
-		/*
-		for(Team team: euLeague.getTeams()) {
-			for(int i=1; i<=3; i++) {
-				Player player = new Player("Player "+i,team);
-				team.addPlayer(player);
-				playerRepository.save(player);
-			}
-			teamRepository.save(team);
-		}*/
+		
 		Player flakes = new Player("Flakes",barcelona);
 		Player ronaky = new Player("Ronaky",barcelona);
 		Player deevo = new Player("Deevo",barcelona);
@@ -229,6 +214,106 @@ public class DatabaseLoader {
 		playerRepository.save(tho);
 		teamRepository.save(singularity);
 		
+		Player hockser = new Player("hockser",eUnited);
+		Player rolldizz = new Player("Roll Dizz",eUnited);
+		Player ayjacks = new Player("ayjacks",eUnited);
+		eUnited.addPlayer(hockser);
+		eUnited.addPlayer(rolldizz);
+		eUnited.addPlayer(ayjacks);
+		playerRepository.save(hockser);
+		playerRepository.save(rolldizz);
+		playerRepository.save(ayjacks);
+		teamRepository.save(eUnited);
+		Player allushin = new Player("Allushin",ghostGaming);
+		Player atomic = new Player("Atomic",ghostGaming);
+		Player mist = new Player("mist",ghostGaming);
+		ghostGaming.addPlayer(allushin);
+		ghostGaming.addPlayer(atomic);
+		ghostGaming.addPlayer(mist);
+		playerRepository.save(allushin);
+		playerRepository.save(atomic);
+		playerRepository.save(mist);
+		teamRepository.save(ghostGaming);
+		Player garretg = new Player("GarretG",nrg);
+		Player jstn = new Player("jstn",nrg);
+		Player turbopolsa = new Player("Turbopolsa",nrg);
+		nrg.addPlayer(garretg);
+		nrg.addPlayer(jstn);
+		nrg.addPlayer(turbopolsa);
+		playerRepository.save(garretg);
+		playerRepository.save(jstn);
+		playerRepository.save(turbopolsa);
+		teamRepository.save(nrg);
+		Player gyro = new Player("Gyro.",pk);
+		Player retals = new Player("retals",pk);
+		Player ayyjayy = new Player("AyyJayy",pk);
+		pk.addPlayer(gyro);
+		pk.addPlayer(retals);
+		pk.addPlayer(ayyjayy);
+		playerRepository.save(gyro);
+		playerRepository.save(retals);
+		playerRepository.save(ayyjayy);
+		teamRepository.save(pk);
+		Player wonder = new Player("Wonder",rogue);
+		Player kronovi = new Player("Kronovi",rogue);
+		Player firstkiller = new Player("firstkiller",rogue);
+		rogue.addPlayer(wonder);
+		rogue.addPlayer(kronovi);
+		rogue.addPlayer(firstkiller);
+		playerRepository.save(wonder);
+		playerRepository.save(kronovi);
+		playerRepository.save(firstkiller);
+		teamRepository.save(rogue);
+		Player sypical = new Player("Sypical",ssg);
+		Player axb = new Player("AxB",ssg);
+		Player arsenal = new Player("Arsenal",ssg);
+		ssg.addPlayer(sypical);
+		ssg.addPlayer(axb);
+		ssg.addPlayer(arsenal);
+		playerRepository.save(sypical);
+		playerRepository.save(axb);
+		playerRepository.save(arsenal);
+		teamRepository.save(ssg);
+		Player shoq = new Player("Shoq",soniqs);
+		Player satthew = new Player("Satthew",soniqs);
+		Player dappur = new Player("Dappur",soniqs);
+		soniqs.addPlayer(shoq);
+		soniqs.addPlayer(satthew);
+		soniqs.addPlayer(dappur);
+		playerRepository.save(shoq);
+		playerRepository.save(satthew);
+		playerRepository.save(dappur);
+		teamRepository.save(soniqs);
+		Player rapid = new Player("rapid",flight);
+		Player seaBass = new Player("Sea-Bass",flight);
+		Player memory = new Player("Memory",flight);
+		flight.addPlayer(rapid);
+		flight.addPlayer(seaBass);
+		flight.addPlayer(memory);
+		playerRepository.save(rapid);
+		playerRepository.save(seaBass);
+		playerRepository.save(memory);
+		teamRepository.save(flight);
+		Player rizzo = new Player("Rizzo",g2);
+		Player jknaps = new Player("Jknaps",g2);
+		Player chicago = new Player("Chicago",g2);
+		g2.addPlayer(rizzo);
+		g2.addPlayer(jknaps);
+		g2.addPlayer(chicago);
+		playerRepository.save(rizzo);
+		playerRepository.save(jknaps);
+		playerRepository.save(chicago);
+		teamRepository.save(g2);
+		Player squishy = new Player("Squishy",c9);
+		Player gimmick = new Player("gimmick",c9);
+		Player torment = new Player("Torment",c9);
+		c9.addPlayer(squishy);
+		c9.addPlayer(gimmick);
+		c9.addPlayer(torment);
+		playerRepository.save(squishy);
+		playerRepository.save(gimmick);
+		playerRepository.save(torment);
+		teamRepository.save(c9);
 	}
 
 }
