@@ -76,47 +76,55 @@ public class AdminController {
 			Integer points = 0;
 			if(user.isMadeEUPrediction()) {
 				if(user.getEuPrediction().getSavior().getPlayerName().equals(saviorEU)) {
-					points = points + 1;
+					points = points + 50;
 				}
 				if(user.getEuPrediction().getClutch().getPlayerName().equals(clutchEU)) {
-					points = points + 1;
+					points = points+ 50;
 				}
 				if(user.getEuPrediction().getStriker().getPlayerName().equals(strikerEU)) {
-					points = points + 1;
+					points = points + 50;
 				}
-				PredictionLeague pred = user.getEuPrediction().getLeaguePrediction();
-				int i = 0;
-				for(Team team: pred) {
-					if(team.getTeamName().equals(liValuesEU[i])) {
-						points = points + 1;
-					}
-					i++;
-				}
+				points = points + pointsAux(user.getEuPrediction().getLeaguePrediction(),liValuesEU);
 			}
 			if(user.isMadeNAPrediction()) {
 				if(user.getNaPrediction().getSavior().getPlayerName().equals(saviorNA)) {
-					points = points + 1;
+					points = points + 50;
 				}
 				if(user.getNaPrediction().getClutch().getPlayerName().equals(clutchNA)) {
-					points = points + 1;
+					points = points + 50;
 				}
 				if(user.getNaPrediction().getStriker().getPlayerName().equals(strikerNA)) {
-					points = points + 1;
+					points = points + 50;
 				}
-				PredictionLeague pred = user.getNaPrediction().getLeaguePrediction();
-				int i = 0;
-				for(Team team: pred) {
-					if(team.getTeamName().equals(liValuesNA[i])) {
-						points = points + 1;
-					}
-					i++;
-				}
+				points = points + pointsAux(user.getNaPrediction().getLeaguePrediction(),liValuesNA);
 			}
 			user.setPoints(points);
 			userRepository.save(user);
 		}
 		
 		return "home";
+	}
+	
+	public Integer pointsAux(PredictionLeague pred, String[] liValues ) {
+		int i = 0;
+		int points = 0;
+		for(Team team: pred) {
+			if(team.getTeamName().equals(liValues[i])) {
+				points = points + 20;
+			}
+			if(i != 0) {
+				if(team.getTeamName().equals(liValues[i-1])) {
+					points = points + 10;
+				}
+			}
+			if(i != 9) {
+				if(team.getTeamName().equals(liValues[i+1])) {
+					points = points + 10;
+				}
+			}
+			i++;
+		}
+		return points;
 	}
 
 }
