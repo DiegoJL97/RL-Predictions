@@ -593,3 +593,61 @@ body.dragging, body.dragging * {
     width: 30%;
     display: inline-block;
 }
+
+/* LEADERBOARD */
+
+.calendarLeaderboard {
+    height: 60%;
+    vertical-align: middle;
+    text-align: center;
+    padding: 12% 0 2% 0;
+}
+
+.calendarLeaderboard img {
+    height: 100%;
+    width: 15%;
+    display: inline-block;
+    text-align: left;
+}
+
+.descriptionLeaderboard {
+    height: 20%;
+    width: 80%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.descriptionLeaderboard p {
+    color: white;
+    font-size: 200%;
+}
+
+
+
+
+.userInfoLeaderboard {
+    height: 15%;
+    text-align: center;
+    padding-top: 8%;
+}
+
+.userInfoLeaderboard p {
+    color: white;
+    font-size: 200%;
+}
+
+.tableLeaderboard {
+    padding-top: 5%;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.white {
+    background-color: white;
+}
+
+tr,th {
+    text-align: center;
+}

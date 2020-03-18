@@ -1,0 +1,40 @@
+{{#finished}}
+	{{>headerLong}}
+		<div class="userInfoLeaderboard">
+			<p>You got {{userPoints}} points this season!</p>
+			<p>Your overall ranking is {{userPosition}}, congratulations!</p>
+		</div>
+		<div class="tableLeaderboard">
+			<div class="panel panel-default">
+				<table class="table table-hover table-bordered white">
+					<thead>
+						<tr>
+						<th scope="col">#</th>
+						<th scope="col">Username</th>
+						<th scope="col">Points</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#allUsers}}
+							<tr>
+								<th scope="row">{{position}}</th>
+								<td>{{username}}</td>
+								<td>{{points}}</td>
+							</tr>
+						{{/allUsers}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	{{>footer}}
+{{/finished}}
+{{^finished}}
+	{{>header}}
+		<div class="calendarLeaderboard">
+			<img src="images/calendar.png" alt="Calendar">
+		</div>
+		<div class="descriptionLeaderboard">
+			<p>The RLCS is still in game, wait until it finishes to see your points!</p>
+		</div>
+	{{>footer}}
+{{/finished}}

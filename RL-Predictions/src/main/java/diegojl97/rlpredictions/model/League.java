@@ -18,6 +18,7 @@ public class League {
 	private long id;
 	
 	private String leagueName;
+	private boolean finished;
 	
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "league")
 	private List<Team> teams = new ArrayList<>();
@@ -29,6 +30,7 @@ public class League {
 	public League(String leagueName) {
 		super();
 		this.leagueName = leagueName;
+		this.finished = false;
 	}
 
 	public long getId() {
@@ -61,6 +63,14 @@ public class League {
 	
 	public void removeTeam(Team team) {
 		this.teams.remove(team);
+	}
+
+	public boolean isFinished() {
+		return finished;
+	}
+
+	public void setFinished(boolean finished) {
+		this.finished = finished;
 	}
 
 }

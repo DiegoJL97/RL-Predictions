@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
-public class User {
+public class User implements Comparable<User>{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,6 +36,7 @@ public class User {
 	private Prediction euPrediction;
 	
 	private Integer points;
+	private Integer position;
 	
 	public User() {
 		super();
@@ -51,6 +52,7 @@ public class User {
 		this.madeNAPrediction = false;
 		this.madeEUPrediction = false;
 		this.points = 0;
+		this.position = -1;
 	}
 
 	public User(String username, String password, List<String> roles) {
@@ -130,6 +132,19 @@ public class User {
 
 	public void setPoints(Integer points) {
 		this.points = points;
+	}
+
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
+	@Override
+	public int compareTo(User arg0) {
+		return this.points - arg0.getPoints();
 	}
 	
 }

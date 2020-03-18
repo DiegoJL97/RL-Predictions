@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/eupredictions").hasAnyRole("USER","ADMIN");
 		http.authorizeRequests().antMatchers("/makePredictions").hasAnyRole("USER","ADMIN");
 		http.authorizeRequests().antMatchers("/goHome").hasAnyRole("USER","ADMIN");
+		http.authorizeRequests().antMatchers("/leaderboard").hasAnyRole("USER","ADMIN");
 		
 		http.authorizeRequests().antMatchers("/finishLeague").hasAnyRole("ADMIN");
 

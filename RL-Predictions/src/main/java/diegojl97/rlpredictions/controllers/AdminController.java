@@ -102,6 +102,13 @@ public class AdminController {
 			userRepository.save(user);
 		}
 		
+		League naLeague = leagueRepository.findByLeagueName("NA");
+		League euLeague = leagueRepository.findByLeagueName("EU");
+		naLeague.setFinished(true);
+		euLeague.setFinished(true);
+		leagueRepository.save(naLeague);
+		leagueRepository.save(euLeague);
+		
 		return "home";
 	}
 	
