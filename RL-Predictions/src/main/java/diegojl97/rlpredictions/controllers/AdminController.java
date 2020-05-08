@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,6 +19,9 @@ import diegojl97.rlpredictions.model.PredictionLeague;
 import diegojl97.rlpredictions.model.Team;
 import diegojl97.rlpredictions.model.User;
 import diegojl97.rlpredictions.repositories.LeagueRepository;
+import diegojl97.rlpredictions.repositories.PlayerRepository;
+import diegojl97.rlpredictions.repositories.PredictionRepository;
+import diegojl97.rlpredictions.repositories.TeamRepository;
 import diegojl97.rlpredictions.repositories.UserRepository;
 import diegojl97.rlpredictions.security.UserSessionInfoComponent;
 
@@ -31,7 +35,22 @@ public class AdminController {
 	private LeagueRepository leagueRepository;
 	
 	@Autowired
+	private TeamRepository teamRepository;
+	
+	@Autowired
+	private PlayerRepository playerRepository;
+	
+	@Autowired
+	private PredictionRepository predictionRepository;
+	
+	@Autowired
 	private UserRepository userRepository;
+	
+	/*
+	 * 
+	 * 		/finishLeague ---> /resetLeagues ---> /modifyTeam/** ---> /resetLeagues
+	 * 
+	 */
 	
 	@GetMapping("/finishLeague")
 	public String loadFinishLeague(Model model) {
@@ -133,5 +152,65 @@ public class AdminController {
 		}
 		return points;
 	}
+	
+	@GetMapping("/resetLeagues")
+	public String loadResetLeagues (Model model) {			
+		model.addAttribute("logged", userSession.getLoggedUser());
+		for(User user: userRepository.findAll()) {
+			if(user.isMadeEUPrediction()) {
+				user.setEuPrediction(null);
+				user.setMadeEUPrediction(false);
+			}
+			if(user.isMadeNAPrediction()) {
+				user.setNaPrediction(null);
+				user.setMadeNAPrediction(false);
+			}
+			user.setPoints(0);
+			userRepository.save(user);
+		}
+		predictionRepository.deleteAll();
+		League naLeague = leagueRepository.findByLeagueName("NA");
+		League euLeague = leagueRepository.findByLeagueName("EU");
+		naLeague.setFinished(false);
+		euLeague.setFinished(false);
+		leagueRepository.save(naLeague);
+		leagueRepository.save(euLeague);
+		return "home";
+	}
+
+	@GetMapping("/modifyTeam/{teamName}")
+	public String modifySpecificTeam(Model model, @PathVariable String teamName) {
+		model.addAttribute("logged", userSession.getLoggedUser());
+		Team team = teamRepository.findByTeamName(teamName);
+		model.addAttribute("team",team);
+		return "modifyTeam";
+	}
+	
+	@PostMapping("/modifyTeam/{teamName}")
+	public String modifySpecificTeamPost(Model model, HttpServletRequest request, @PathVariable String teamName, @RequestParam(name = "teamName") String newTeamName) {
+		model.addAttribute("logged", userSession.getLoggedUser());
+		String[] liValues = request.getParameterValues("liContent");
+		Team team = teamRepository.findByTeamName(teamName);
+		if(!newTeamName.equalsIgnoreCase(teamName)) {
+			team.setTeamName(newTeamName);
+		}
+		int i = 0;
+		List<Player> players = new ArrayList<>();
+		for(Player p: team.getPlayers()) {
+			if(!p.getPlayerName().equals(liValues[i])) {
+				Player newPlayer = new Player(liValues[i],team);
+				players.add(newPlayer);
+				playerRepository.delete(p);
+				playerRepository.save(newPlayer);
+			} else {
+				players.add(p);
+			}
+			i++;
+		}
+		team.setPlayers(players);
+		teamRepository.save(team);
+		return "redirect:/";
+	}
+	
 
 }

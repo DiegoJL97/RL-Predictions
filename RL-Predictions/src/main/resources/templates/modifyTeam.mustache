@@ -1,0 +1,15 @@
+{{>headerModify}}
+            <form action="/modifyTeam/{{team.teamName}}" method="post">
+                <div class="nameModify">
+                    <input type="text" value="{{teamName}}" name="teamName">
+                </div>
+                <div class="playersModify">
+                    {{#team.players}}
+                        <input type="text" value="{{playerName}}" name="liContent">
+                    {{/team.players}}
+                </div>
+                <div class="sendModifyButton">
+                    <input type="submit" value="Apply changes"/>
+                </div>
+            </form>
+{{>footer}}

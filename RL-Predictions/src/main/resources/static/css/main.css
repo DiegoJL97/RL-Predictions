@@ -651,3 +651,37 @@ body.dragging, body.dragging * {
 tr,th {
     text-align: center;
 }
+
+/* MODIFY TEAM */
+
+.nameModify {
+    width: 100%;
+    padding-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nameModify input{
+    width: 40%;
+    margin: 0 auto;
+}
+
+.playersModify {
+    width: 100%;
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playersModify {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.sendModifyButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
