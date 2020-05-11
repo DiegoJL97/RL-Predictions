@@ -63,6 +63,7 @@ public class PredictionController {
 			model.addAttribute("striker",striker.getPlayerName());
 		} else {
 			League naLeague = leagueRepository.findByLeagueName("NA");
+			model.addAttribute("started", naLeague.isStarted());
 			model.addAttribute("league","NA");
 			model.addAttribute("teams",naLeague.getTeams());
 			List<Player> players = new ArrayList<>();
@@ -97,6 +98,7 @@ public class PredictionController {
 			model.addAttribute("striker",striker.getPlayerName());
 		} else {
 			League euLeague = leagueRepository.findByLeagueName("EU");
+			model.addAttribute("started", euLeague.isStarted());
 			model.addAttribute("league","EU");
 			model.addAttribute("teams",euLeague.getTeams());
 			List<Player> players = new ArrayList<>();

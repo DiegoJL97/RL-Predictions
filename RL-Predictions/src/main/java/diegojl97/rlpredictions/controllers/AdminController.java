@@ -48,9 +48,20 @@ public class AdminController {
 	
 	/*
 	 * 
-	 * 		/finishLeague ---> /resetLeagues ---> /modifyTeam/** ---> /resetLeagues
+	 * 		/startLeague --> /finishLeague ---> /resetLeagues ---> /modifyTeam/** ---> /resetLeagues
 	 * 
 	 */
+	
+	@GetMapping("/startLeague")
+	public String loadStartLeague(Model model) {
+		League naLeague = leagueRepository.findByLeagueName("NA");
+		League euLeague = leagueRepository.findByLeagueName("EU");
+		naLeague.setStarted(true);
+		euLeague.setStarted(true);
+		leagueRepository.save(naLeague);
+		leagueRepository.save(euLeague);
+		return "redirect:/";
+	}
 	
 	@GetMapping("/finishLeague")
 	public String loadFinishLeague(Model model) {
@@ -173,6 +184,8 @@ public class AdminController {
 		League euLeague = leagueRepository.findByLeagueName("EU");
 		naLeague.setFinished(false);
 		euLeague.setFinished(false);
+		naLeague.setStarted(false);
+		euLeague.setStarted(false);
 		leagueRepository.save(naLeague);
 		leagueRepository.save(euLeague);
 		return "home";

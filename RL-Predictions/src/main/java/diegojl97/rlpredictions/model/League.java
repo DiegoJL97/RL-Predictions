@@ -18,6 +18,7 @@ public class League {
 	private long id;
 	
 	private String leagueName;
+	private boolean started;
 	private boolean finished;
 	
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "league")
@@ -30,6 +31,7 @@ public class League {
 	public League(String leagueName) {
 		super();
 		this.leagueName = leagueName;
+		this.started = false;
 		this.finished = false;
 	}
 
@@ -71,6 +73,14 @@ public class League {
 
 	public void setFinished(boolean finished) {
 		this.finished = finished;
+	}
+
+	public boolean isStarted() {
+		return started;
+	}
+
+	public void setStarted(boolean started) {
+		this.started = started;
 	}
 
 }
