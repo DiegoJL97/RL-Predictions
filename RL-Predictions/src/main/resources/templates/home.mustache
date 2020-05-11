@@ -3,14 +3,24 @@
 				<img src="images/rlcs-logo.png" alt="RLCS Logo">
 			</div>
 			<div class="homeDescription">
-				<p>
-					Would you like to make RLCS's predictions? You can do this thanks to RLPredictions, what position will the EU and NA teams be in? And what about the players, 
-					who will be the golden striker, the clutch playmaker and the savior of the season?
-				</p>
-				<p>
-					Write down and save your predictions here, and when the season's over, you can see how many of them you got right. See what other people thought and,of course,
-					compare it with your friends.
-				</p>
+				{{#madePrediction}}
+					<p class="madePredictionHome">
+						Congratulations, you have made your predictions!
+					</p>
+					<p class="madePredictionHome">
+						Wait until the end of the season to check how many you got right
+					</p>
+				{{/madePrediction}}
+				{{^madePrediction}}
+					<p>
+						Would you like to make RLCS's predictions? You can do this thanks to RLPredictions, what position will the EU and NA teams be in? And what about the players, 
+						who will be the golden striker, the clutch playmaker and the savior of the season?
+					</p>
+					<p>
+						Write down and save your predictions here, and when the season's over, you can see how many of them you got right. See what other people thought and,of course,
+						compare it with your friends.
+					</p>
+				{{/madePrediction}}
 			</div>
 			<form class="homeParticipateButton" action="/chooseLeague">
 				<button type="submit" class="btn btn-primary btn-lg">Take part!</button>

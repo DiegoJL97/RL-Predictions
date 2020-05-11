@@ -1,6 +1,11 @@
 {{>header}}
 			<div class="descriptionChoose">
-				<p>Choose the league you want to make predictions for!</p>
+				{{#madePrediction}}
+					<p>Click on the corresponding logo to see your predictions</p>
+				{{/madePrediction}}
+				{{^madePrediction}}
+					<p>Choose the league you want to make predictions for!</p>
+				{{/madePrediction}}
 			</div>
 			<div class="imagesChoose clearfix">
 				<div class="leagueChoose">

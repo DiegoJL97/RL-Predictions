@@ -99,6 +99,12 @@ body {
     text-align: center;
 }
 
+.madePredictionHome {
+    font-size: 200%;
+    color: white;
+    text-align: center;
+}
+
 .homeParticipateButton{
     height: 15%;
     vertical-align: middle;

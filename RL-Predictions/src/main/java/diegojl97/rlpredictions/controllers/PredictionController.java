@@ -155,6 +155,8 @@ public class PredictionController {
 	@RequestMapping("/goHome")
 	public String goHome(Model model) {
 		model.addAttribute("logged", userSession.getLoggedUser());
+		boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction() && userSession.getLoggedUser().isMadeEUPrediction();
+		model.addAttribute("madePrediction",madePrediction);
 		return "home";
 	}
 	

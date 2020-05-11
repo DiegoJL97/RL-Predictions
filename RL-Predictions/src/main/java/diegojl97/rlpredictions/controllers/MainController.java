@@ -16,12 +16,18 @@ public class MainController {
 	@RequestMapping("/")
 	public String loadHome (Model model) {
 		model.addAttribute("logged", userSession.getLoggedUser());
+		if(userSession.isLoggedUser()) {
+			boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction() && userSession.getLoggedUser().isMadeEUPrediction();
+			model.addAttribute("madePrediction",madePrediction);
+		}
 		return "home";
 	}
 	
 	@RequestMapping("/chooseLeague")
 	public String chooseLeague(Model model) {
 		model.addAttribute("logged", userSession.getLoggedUser());
+		boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction() && userSession.getLoggedUser().isMadeEUPrediction();
+		model.addAttribute("madePrediction",madePrediction);
 		return "chooseLeague";
 	}
 
