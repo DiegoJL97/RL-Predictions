@@ -46,6 +46,8 @@ public class AdminController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	private static final String logged = "logged";
+	
 	/*
 	 * 
 	 * 		/startLeague --> /finishLeague ---> /resetLeagues ---> /modifyTeam/** ---> /resetLeagues
@@ -66,7 +68,7 @@ public class AdminController {
 	@GetMapping("/finishLeague")
 	public String loadFinishLeague(Model model) {
 		
-		model.addAttribute("logged", userSession.getLoggedUser());
+		model.addAttribute(logged, userSession.getLoggedUser());
 		
 		League naLeague = leagueRepository.findByLeagueName("NA");
 		model.addAttribute("naTeams",naLeague.getTeams());
@@ -97,7 +99,7 @@ public class AdminController {
 									@RequestParam(name = "saviorEU") String saviorEU, @RequestParam(name = "clutchEU") String clutchEU, 
 									@RequestParam(name = "strikerEU") String strikerEU) 
 	{
-		model.addAttribute("logged", userSession.getLoggedUser());
+		model.addAttribute(logged, userSession.getLoggedUser());
 		
 		String[] liValuesNA = request.getParameterValues("liContentNA");
 		String[] liValuesEU = request.getParameterValues("liContentEU");
@@ -166,7 +168,7 @@ public class AdminController {
 	
 	@GetMapping("/resetLeagues")
 	public String loadResetLeagues (Model model) {			
-		model.addAttribute("logged", userSession.getLoggedUser());
+		model.addAttribute(logged, userSession.getLoggedUser());
 		for(User user: userRepository.findAll()) {
 			if(user.isMadeEUPrediction()) {
 				user.setEuPrediction(null);
@@ -193,7 +195,7 @@ public class AdminController {
 
 	@GetMapping("/modifyTeam/{teamName}")
 	public String modifySpecificTeam(Model model, @PathVariable String teamName) {
-		model.addAttribute("logged", userSession.getLoggedUser());
+		model.addAttribute(logged, userSession.getLoggedUser());
 		Team team = teamRepository.findByTeamName(teamName);
 		model.addAttribute("team",team);
 		return "modifyTeam";
@@ -201,7 +203,7 @@ public class AdminController {
 	
 	@PostMapping("/modifyTeam/{teamName}")
 	public String modifySpecificTeamPost(Model model, HttpServletRequest request, @PathVariable String teamName, @RequestParam(name = "teamName") String newTeamName) {
-		model.addAttribute("logged", userSession.getLoggedUser());
+		model.addAttribute(logged, userSession.getLoggedUser());
 		String[] liValues = request.getParameterValues("liContent");
 		Team team = teamRepository.findByTeamName(teamName);
 		if(!newTeamName.equalsIgnoreCase(teamName)) {

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import diegojl97.rlpredictions.model.League;
@@ -42,13 +42,17 @@ public class PredictionController {
 	@Autowired
 	private PlayerRepository playerRepository;
 	
+	private static final String logged = "logged";
+	private static final String madePredictionString = "madePrediction";
+	private static final String teamsString = "teams";
 	
-	@RequestMapping("/napredictions")
+	
+	@GetMapping("/napredictions")
 	public String loadNAPredictions(Model model) {
 		
-		model.addAttribute("logged", userSession.getLoggedUser());
+		model.addAttribute(logged, userSession.getLoggedUser());
 		boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction();
-		model.addAttribute("madePrediction",madePrediction);
+		model.addAttribute(madePredictionString,madePrediction);
 		if(madePrediction) {
 			List<Team> teams = new ArrayList<>();
 			for(Team team: userSession.getLoggedUser().getNaPrediction().getLeaguePrediction()) {
@@ -57,7 +61,7 @@ public class PredictionController {
 			Player savior = userSession.getLoggedUser().getNaPrediction().getSavior();
 			Player clutch = userSession.getLoggedUser().getNaPrediction().getClutch();
 			Player striker = userSession.getLoggedUser().getNaPrediction().getStriker();
-			model.addAttribute("teams",teams);
+			model.addAttribute(teamsString,teams);
 			model.addAttribute("savior",savior.getPlayerName());
 			model.addAttribute("clutch",clutch.getPlayerName());
 			model.addAttribute("striker",striker.getPlayerName());
@@ -65,7 +69,7 @@ public class PredictionController {
 			League naLeague = leagueRepository.findByLeagueName("NA");
 			model.addAttribute("started", naLeague.isStarted());
 			model.addAttribute("league","NA");
-			model.addAttribute("teams",naLeague.getTeams());
+			model.addAttribute(teamsString,naLeague.getTeams());
 			List<Player> players = new ArrayList<>();
 			for(Team team: naLeague.getTeams()) {
 				for(Player player: team.getPlayers()) {
@@ -78,12 +82,12 @@ public class PredictionController {
 		
 	}
 	
-	@RequestMapping("/eupredictions")
+	@GetMapping("/eupredictions")
 	public String loadEUPredictions(Model model) {
 
-		model.addAttribute("logged", userSession.getLoggedUser());
+		model.addAttribute(logged, userSession.getLoggedUser());
 		boolean madePrediction = userSession.getLoggedUser().isMadeEUPrediction();
-		model.addAttribute("madePrediction",madePrediction);
+		model.addAttribute(madePredictionString,madePrediction);
 		if(madePrediction) {
 			List<Team> teams = new ArrayList<>();
 			for(Team team: userSession.getLoggedUser().getEuPrediction().getLeaguePrediction()) {
@@ -92,7 +96,7 @@ public class PredictionController {
 			Player savior = userSession.getLoggedUser().getEuPrediction().getSavior();
 			Player clutch = userSession.getLoggedUser().getEuPrediction().getClutch();
 			Player striker = userSession.getLoggedUser().getEuPrediction().getStriker();
-			model.addAttribute("teams",teams);
+			model.addAttribute(teamsString,teams);
 			model.addAttribute("savior",savior.getPlayerName());
 			model.addAttribute("clutch",clutch.getPlayerName());
 			model.addAttribute("striker",striker.getPlayerName());
@@ -100,7 +104,7 @@ public class PredictionController {
 			League euLeague = leagueRepository.findByLeagueName("EU");
 			model.addAttribute("started", euLeague.isStarted());
 			model.addAttribute("league","EU");
-			model.addAttribute("teams",euLeague.getTeams());
+			model.addAttribute(teamsString,euLeague.getTeams());
 			List<Player> players = new ArrayList<>();
 			for(Team team: euLeague.getTeams()) {
 				for(Player player: team.getPlayers()) {
@@ -147,16 +151,16 @@ public class PredictionController {
 	    }
 	    userSession.setLoggedUser(user);
 	    userRepository.save(user);
-	    model.addAttribute("logged", userSession.getLoggedUser());
+	    model.addAttribute(logged, userSession.getLoggedUser());
 	    return "predictionSaved";
 	    
 	  }
 	
-	@RequestMapping("/goHome")
+	@GetMapping("/goHome")
 	public String goHome(Model model) {
-		model.addAttribute("logged", userSession.getLoggedUser());
+		model.addAttribute(logged, userSession.getLoggedUser());
 		boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction() && userSession.getLoggedUser().isMadeEUPrediction();
-		model.addAttribute("madePrediction",madePrediction);
+		model.addAttribute(madePredictionString,madePrediction);
 		return "home";
 	}
 	

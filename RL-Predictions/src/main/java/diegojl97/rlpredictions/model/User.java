@@ -46,9 +46,9 @@ public class User implements Comparable<User>{
 		super();
 		this.username = username;
 		this.password = new BCryptPasswordEncoder().encode(password);
-		ArrayList<String> roles = new ArrayList<>();
-		roles.add("ROLE_USER");
-		this.roles = roles;
+		ArrayList<String> userRoles = new ArrayList<>();
+		userRoles.add("ROLE_USER");
+		this.roles = userRoles;
 		this.madeNAPrediction = false;
 		this.madeEUPrediction = false;
 		this.points = 0;

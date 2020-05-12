@@ -1,6 +1,7 @@
 package diegojl97.rlpredictions.model;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -150,6 +151,9 @@ public class PredictionLeague implements Iterable<Team> {
         }
  
         public Team next() {
+        	if(!hasNext()){
+        	      throw new NoSuchElementException();
+    	    }
             switch(position) {
             	case 1: position++;
             			return first;
@@ -171,13 +175,13 @@ public class PredictionLeague implements Iterable<Team> {
             			return ninth;
             	case 10: position++;
             			return tenth;
-            	default: return null;
+            	default: throw new NoSuchElementException();
             }
         }
  
         @Override
         public void remove() {
- 
+        	throw new UnsupportedOperationException();
         }
     }
 
