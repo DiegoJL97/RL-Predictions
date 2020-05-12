@@ -4,15 +4,36 @@
 			</div>
 			<div class="homeDescription">
 				{{#madePrediction}}
-					<p class="madePredictionHome">
-						Congratulations, you have made your predictions!
-					</p>
-					<p class="madePredictionHome">
-						Wait until the end of the season to check how many you got right
-					</p>
+					{{#finished}}
+						<p>
+							RLCS league is now over! Go check your results and tell your friends
+							how many you got right.
+						</p>
+						<p>
+							We hope you enjoy our website and will see each other in the next season for
+							more predictions!
+						</p>
+					{{/finished}}
+					{{^finished}}
+						<p class="madePredictionHome">
+							Congratulations, you have made your predictions!
+						</p>
+						<p class="madePredictionHome">
+							Wait until the end of the season to check how many you got right
+						</p>
+					{{/finished}}
 				{{/madePrediction}}
 				{{^madePrediction}}
-					<p>
+					{{#finished}}
+						<p>
+							RLCS league is now over! We are sad that you couldn´t make your predictions on time :(
+						</p>
+						<p>
+							We hope you will visit our website next season for more Rocket League predictions and results!
+						</p>
+					{{/finished}}
+					{{^finished}}
+						<p>
 						Would you like to make RLCS's predictions? You can do this thanks to RLPredictions, what position will the EU and NA teams be in? And what about the players, 
 						who will be the golden striker, the clutch playmaker and the savior of the season?
 					</p>
@@ -20,6 +41,7 @@
 						Write down and save your predictions here, and when the season's over, you can see how many of them you got right. See what other people thought and,of course,
 						compare it with your friends.
 					</p>
+					{{/finished}}
 				{{/madePrediction}}
 			</div>
 			<form class="homeParticipateButton" action="/chooseLeague">

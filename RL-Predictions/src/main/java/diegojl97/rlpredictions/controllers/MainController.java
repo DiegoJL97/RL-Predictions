@@ -5,10 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import diegojl97.rlpredictions.model.League;
+import diegojl97.rlpredictions.repositories.LeagueRepository;
 import diegojl97.rlpredictions.security.UserSessionInfoComponent;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	private LeagueRepository leagueRepository;
 	
 	@Autowired
 	private UserSessionInfoComponent userSession;
@@ -19,6 +24,10 @@ public class MainController {
 		if(userSession.isLoggedUser()) {
 			boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction() && userSession.getLoggedUser().isMadeEUPrediction();
 			model.addAttribute("madePrediction",madePrediction);
+			League euLeague = leagueRepository.findByLeagueName("EU");
+			League naLeague = leagueRepository.findByLeagueName("NA");
+			boolean finished = euLeague.isFinished() && naLeague.isFinished();
+			model.addAttribute("finished", finished);
 		}
 		return "home";
 	}
@@ -26,8 +35,10 @@ public class MainController {
 	@RequestMapping("/chooseLeague")
 	public String chooseLeague(Model model) {
 		model.addAttribute("logged", userSession.getLoggedUser());
-		boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction() && userSession.getLoggedUser().isMadeEUPrediction();
-		model.addAttribute("madePrediction",madePrediction);
+		if(userSession.isLoggedUser()) {
+			boolean madePrediction = userSession.getLoggedUser().isMadeNAPrediction() && userSession.getLoggedUser().isMadeEUPrediction();
+			model.addAttribute("madePrediction",madePrediction);
+		}
 		return "chooseLeague";
 	}
 
