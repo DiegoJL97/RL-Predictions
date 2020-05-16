@@ -25,6 +25,10 @@ public class Prediction {
 	@OneToOne(fetch=FetchType.EAGER)
 	private Player striker;
 	
+	private boolean isSaviorCorrect;
+	private boolean isClutchCorrect;
+	private boolean isStrikerCorrect;
+	
 	public Prediction() {
 		
 	}
@@ -34,6 +38,9 @@ public class Prediction {
 		this.savior = savior;
 		this.clutch = clutch;
 		this.striker = striker;
+		this.isSaviorCorrect = false;
+		this.isClutchCorrect = false;
+		this.isStrikerCorrect = false;
 	}
 
 	public PredictionLeague getLeaguePrediction() {
@@ -66,6 +73,30 @@ public class Prediction {
 
 	public void setStriker(Player striker) {
 		this.striker = striker;
+	}
+
+	public boolean isSaviorCorrect() {
+		return isSaviorCorrect;
+	}
+
+	public void setSaviorCorrect(boolean isSaviorCorrect) {
+		this.isSaviorCorrect = isSaviorCorrect;
+	}
+
+	public boolean isClutchCorrect() {
+		return isClutchCorrect;
+	}
+
+	public void setClutchCorrect(boolean isClutchCorrect) {
+		this.isClutchCorrect = isClutchCorrect;
+	}
+
+	public boolean isStrikerCorrect() {
+		return isStrikerCorrect;
+	}
+
+	public void setStrikerCorrect(boolean isStrikerCorrect) {
+		this.isStrikerCorrect = isStrikerCorrect;
 	}
 	
 }

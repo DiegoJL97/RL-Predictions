@@ -8,10 +8,20 @@
 							<ol class="teams2 list-group">
 							{{#teams}}
 								<li class="list-group-item d-flex justify-content-between align-items-center clearfix verticalCenter">
+								{{#team}}
 									<img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
 									<div class="teamNamePrediction">
 										{{teamName}}
 									</div>
+								{{/team}}
+								{{#finished}}
+									{{#correct}}
+										<i class="fas fa-check"></i>
+									{{/correct}}
+									{{^correct}}
+										<i class="fas fa-times"></i>
+									{{/correct}}
+								{{/finished}}
 								</li> 
 							{{/teams}}
 							</ol>
@@ -24,17 +34,47 @@
 						<div class="onePrediction">
 							<img src="images/save.png" alt="Savior of the season">
 							<p>Savior of the season</p>
-							<p>{{savior}}</p>
+							{{#finished}}
+								{{#saviorCorrect}}
+									<p>{{savior}}<i class="fas fa-check"></i></p>
+								{{/saviorCorrect}}
+								{{^saviorCorrect}}
+									<p>{{savior}}<i class="fas fa-times"></i></p>
+								{{/saviorCorrect}}
+							{{/finished}}
+							{{^finished}}
+								<p>{{savior}}</p>
+							{{/finished}}
 						</div>
 						<div class="onePrediction">
 							<img src="images/assist.png" alt="Clutch playmaker of the season">
 							<p>Clutch playmaker of the season</p>
-							<p>{{clutch}}</p>
+							{{#finished}}
+								{{#clutchCorrect}}
+									<p>{{clutch}}<i class="fas fa-check"></i></p>
+								{{/clutchCorrect}}
+								{{^clutchCorrect}}
+									<p>{{clutch}}<i class="fas fa-times"></i></p>
+								{{/clutchCorrect}}
+							{{/finished}}
+							{{^finished}}
+								<p>{{clutch}}</p>
+							{{/finished}}
 						</div>
 						<div class="onePrediction">
 							<img src="images/goal.png" alt="Golden striker of the season">
 							<p>Golden striker of the season</p>
-							<p>{{striker}}</p>
+							{{#finished}}
+								{{#strikerCorrect}}
+									<p>{{striker}}<i class="fas fa-check"></i></p>
+								{{/strikerCorrect}}
+								{{^strikerCorrect}}
+									<p>{{striker}}<i class="fas fa-times"></i></p>
+								{{/strikerCorrect}}
+							{{/finished}}
+							{{^finished}}
+								<p>{{striker}}</p>
+							{{/finished}}
 						</div>
 					</div>
 			{{/madePrediction}}

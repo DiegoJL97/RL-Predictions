@@ -518,6 +518,10 @@ body.dragging, body.dragging * {
     text-align: center;
 }
 
+.onePrediction p i{
+    padding-left: 2%;;
+}
+
 .onePrediction select {
     width: 30%;
     display: inline-block;

@@ -17,6 +17,7 @@ import diegojl97.rlpredictions.model.League;
 import diegojl97.rlpredictions.model.Player;
 import diegojl97.rlpredictions.model.PredictionLeague;
 import diegojl97.rlpredictions.model.Team;
+import diegojl97.rlpredictions.model.TeamPrediction;
 import diegojl97.rlpredictions.model.User;
 import diegojl97.rlpredictions.repositories.LeagueRepository;
 import diegojl97.rlpredictions.repositories.PlayerRepository;
@@ -109,24 +110,30 @@ public class AdminController {
 			if(user.isMadeEUPrediction()) {
 				if(user.getEuPrediction().getSavior().getPlayerName().equals(saviorEU)) {
 					points = points + 50;
+					user.getEuPrediction().setSaviorCorrect(true);
 				}
 				if(user.getEuPrediction().getClutch().getPlayerName().equals(clutchEU)) {
 					points = points+ 50;
+					user.getEuPrediction().setClutchCorrect(true);
 				}
 				if(user.getEuPrediction().getStriker().getPlayerName().equals(strikerEU)) {
 					points = points + 50;
+					user.getEuPrediction().setStrikerCorrect(true);
 				}
 				points = points + pointsAux(user.getEuPrediction().getLeaguePrediction(),liValuesEU);
 			}
 			if(user.isMadeNAPrediction()) {
 				if(user.getNaPrediction().getSavior().getPlayerName().equals(saviorNA)) {
 					points = points + 50;
+					user.getNaPrediction().setSaviorCorrect(true);
 				}
 				if(user.getNaPrediction().getClutch().getPlayerName().equals(clutchNA)) {
 					points = points + 50;
+					user.getNaPrediction().setClutchCorrect(true);
 				}
 				if(user.getNaPrediction().getStriker().getPlayerName().equals(strikerNA)) {
 					points = points + 50;
+					user.getNaPrediction().setStrikerCorrect(true);
 				}
 				points = points + pointsAux(user.getNaPrediction().getLeaguePrediction(),liValuesNA);
 			}
@@ -147,17 +154,18 @@ public class AdminController {
 	public Integer pointsAux(PredictionLeague pred, String[] liValues ) {
 		int i = 0;
 		int points = 0;
-		for(Team team: pred) {
-			if(team.getTeamName().equals(liValues[i])) {
+		for(TeamPrediction team: pred) {
+			if(team.getTeam().getTeamName().equals(liValues[i])) {
 				points = points + 20;
+				team.setCorrect(true);
 			}
 			if(i != 0) {
-				if(team.getTeamName().equals(liValues[i-1])) {
+				if(team.getTeam().getTeamName().equals(liValues[i-1])) {
 					points = points + 10;
 				}
 			}
 			if(i != 9) {
-				if(team.getTeamName().equals(liValues[i+1])) {
+				if(team.getTeam().getTeamName().equals(liValues[i+1])) {
 					points = points + 10;
 				}
 			}
