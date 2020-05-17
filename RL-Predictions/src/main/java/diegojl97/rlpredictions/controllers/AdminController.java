@@ -55,6 +55,18 @@ public class AdminController {
 	 * 
 	 */
 	
+	@GetMapping("/admin")
+	public String loadAdminPage(Model model) {
+		model.addAttribute(logged, userSession.getLoggedUser());
+		return "admin";
+	}
+	
+	@GetMapping("/redirectModify")
+	public String loadModifyPageRedirect(Model model,@RequestParam(name = "team") String team) {
+		model.addAttribute(logged, userSession.getLoggedUser());
+		return "redirect:/modifyTeam/"+team;
+	}
+	
 	@GetMapping("/startLeague")
 	public String loadStartLeague(Model model) {
 		League naLeague = leagueRepository.findByLeagueName("NA");

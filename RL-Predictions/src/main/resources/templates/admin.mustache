@@ -1,0 +1,52 @@
+{{>header}}
+		<div class="adminNormalRow clearfix">
+            <div class="adminInfo">
+                <p>
+                    Once you click on the button you assumed the RLCS has started, not admitting
+                    more predictions from users.
+                </p>
+            </div>
+            <div class="adminButton">
+                <form class="homeParticipateButton" action="/startLeague">
+				    <button type="submit" class="btn btn-primary btn-lg">Start league</button>
+			    </form>
+            </div>
+        </div>
+        <div class="adminNormalRow clearfix">
+            <div class="adminInfo">
+                <p>
+                    Once you click on the button you assumed the RLCS has finished, 
+                    correcting predictions and calculating points for all users
+                </p>
+            </div>
+            <div class="adminButton">
+                <form class="homeParticipateButton" action="/finishLeague">
+				    <button type="submit" class="btn btn-primary btn-lg">Finish league</button>
+			    </form>
+            </div>
+        </div>
+        <div class="adminNormalRow clearfix">
+            <div class="adminInfo">
+                <p>
+                    Once you click on the button you assumed the new RLCS season is about to start, 
+                    deleting all predictions and points from user
+                </p>
+            </div>
+            <div class="adminButton">
+                <form class="homeParticipateButton" action="/resetLeagues">
+				    <button type="submit" class="btn btn-primary btn-lg">Reset league</button>
+			    </form>
+            </div>
+        </div>
+        <div class="adminNormalRow clearfix">
+            <form action="/redirectModify" method="get">
+                <div class="adminModifyInfo clearfix">
+                    <p>Write down the team name you want to modify: </p>
+                    <input type="text" name="team">
+                </div>
+                <div class="adminButton homeParticipateButton">
+                    <button type="submit" class="btn btn-primary btn-lg">Modify</button>
+                </div> 
+            </form>
+        </div>
+{{>footer}}
