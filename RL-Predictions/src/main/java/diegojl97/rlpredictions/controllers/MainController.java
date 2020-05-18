@@ -41,5 +41,11 @@ public class MainController {
 		}
 		return "chooseLeague";
 	}
+	
+	@GetMapping("/faqs")
+	public String loadFAQsPage(Model model) {
+		model.addAttribute("logged", userSession.getLoggedUser());
+		return "faqs";
+	}
 
 }
