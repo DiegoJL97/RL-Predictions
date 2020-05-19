@@ -77,6 +77,14 @@
 							{{/finished}}
 						</div>
 					</div>
+					{{#started}}
+					{{/started}}
+					{{^started}}
+					<form class="homeParticipateButton" action="/modifyPrediction">
+						<input type="hidden" name="league" value="{{league}}">
+						<button type="submit" class="btn btn-primary btn-lg">Modify prediction</button>
+					</form>
+					{{/started}}
 			{{/madePrediction}}
 			{{^madePrediction}}
 				{{#started}}
