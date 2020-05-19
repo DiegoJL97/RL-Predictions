@@ -184,14 +184,48 @@ public class PredictionController {
 		model.addAttribute("started",leagueObject.isStarted());
 		if(!leagueObject.isStarted()) {
 			model.addAttribute("league",leagueObject.getLeagueName());
-			model.addAttribute(teamsString,leagueObject.getTeams());
+			ArrayList<Team> teams = new ArrayList<>();
+			Player actualSavior = new Player();
+			Player actualClutch = new Player();
+			Player actualStriker = new Player();
+			switch(leagueObject.getLeagueName()) {
+				case "NA":
+					for(TeamPrediction teamPre: userSession.getLoggedUser().getNaPrediction().getLeaguePrediction()) {
+						teams.add(teamPre.getTeam());
+					}
+					actualSavior = userSession.getLoggedUser().getNaPrediction().getSavior();
+					actualClutch = userSession.getLoggedUser().getNaPrediction().getClutch();
+					actualStriker = userSession.getLoggedUser().getNaPrediction().getStriker();
+					break;
+				case "EU": 
+					for(TeamPrediction teamPre: userSession.getLoggedUser().getEuPrediction().getLeaguePrediction()) {
+						teams.add(teamPre.getTeam());
+					}
+					actualSavior = userSession.getLoggedUser().getEuPrediction().getSavior();
+					actualClutch = userSession.getLoggedUser().getEuPrediction().getClutch();
+					actualStriker = userSession.getLoggedUser().getEuPrediction().getStriker();
+					break;
+				default: break;
+			}
+			model.addAttribute("actualSavior", actualSavior.getPlayerName());
+			model.addAttribute("actualClutch", actualClutch.getPlayerName());
+			model.addAttribute("actualStriker", actualStriker.getPlayerName());
+			model.addAttribute(teamsString,teams);
 			List<Player> players = new ArrayList<>();
 			for(Team team: leagueObject.getTeams()) {
 				for(Player player: team.getPlayers()) {
 					players.add(player);
 				}
 			}
-			model.addAttribute("players",players);
+			ArrayList<Player> playersSavior = new ArrayList<>(players);
+			playersSavior.remove(actualSavior);
+			model.addAttribute("playersSavior",playersSavior);
+			ArrayList<Player> playersClutch = new ArrayList<>(players);
+			playersClutch.remove(actualClutch);
+			model.addAttribute("playersClutch",playersClutch);
+			ArrayList<Player> playersStriker = new ArrayList<>(players);
+			playersStriker.remove(actualStriker);
+			model.addAttribute("playersStriker",playersStriker);
 		}
 		return "modify";
 	}

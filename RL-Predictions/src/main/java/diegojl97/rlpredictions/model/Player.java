@@ -19,7 +19,7 @@ public class Player {
 	@OneToOne(fetch=FetchType.EAGER)
 	private Team team;
 	
-	protected Player() {
+	public Player() {
 		
 	}
 
@@ -52,5 +52,28 @@ public class Player {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
+	
+	@Override public int hashCode() { 
+		final int prime = 31; 
+		int result = 1; 
+		result = prime * result + ((playerName == null) ? 0 : playerName.hashCode()); 
+		int idNew = (int) id;
+		result = prime * result + idNew; 
+		return result; 
+	}
 
+	@Override
+	public boolean equals(Object obj) { 
+		if (obj == this) { 
+			return true; 
+		} 
+		if (obj == null || obj.getClass() != this.getClass()) { 
+			return false; 
+		} 
+		Player guest = (Player) obj; 
+		return guest.playerName == playerName  || (playerName != null && playerName.equals(guest.getPlayerName()));
+	} 
+	
 }
+
+

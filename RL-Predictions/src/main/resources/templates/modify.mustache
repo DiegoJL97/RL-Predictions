@@ -34,27 +34,30 @@
                     <img src="images/save.png" alt="Savior of the season">
                     <p>Savior of the season</p>
                     <select class="form-control" id="saviorPrediction" name="savior">
-                        {{#players}}
+                            <option selected>{{actualSavior}}</option>
+                        {{#playersSavior}}
                             <option>{{playerName}}</option>
-                        {{/players}}
+                        {{/playersSavior}}
                     </select>
                 </div>
                 <div class="onePrediction">
                     <img src="images/assist.png" alt="Clutch playmaker of the season">
                     <p>Clutch playmaker of the season</p>
                     <select class="form-control" id="clutchPrediction" name="clutch">
-                        {{#players}}
+                            <option selected>{{actualClutch}}</option>
+                        {{#playersClutch}}
                             <option>{{playerName}}</option>
-                        {{/players}}
+                        {{/playersClutch}}
                     </select>
                 </div>
                 <div class="onePrediction">
                     <img src="images/goal.png" alt="Golden striker of the season">
                     <p>Golden striker of the season</p>
                     <select class="form-control" id="strikerPrediction" name="striker">
-                        {{#players}}
+                            <option selected>{{actualStriker}}</option>
+                        {{#playersStriker}}
                             <option>{{playerName}}</option>
-                        {{/players}}
+                        {{/playersStriker}}
                     </select>
                 </div>
             </div>
