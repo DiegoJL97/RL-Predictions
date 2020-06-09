@@ -1,0 +1,25 @@
+{{>header}}
+            <form action="/addTeam" method="post">
+                <p class="addTeamName">Type the new team name:</p>
+                <div class="addNewTeamName">
+                    <input type="text" name="teamName">
+                </div>
+                <p class="addPlayersNew">Type the players name:</p>
+                <div class="playersNew">
+                    <input type="text" name="liContent">
+                    <input type="text" name="liContent">
+                    <input type="text" name="liContent">
+                </div>
+                <p class="addPlayersNew">Choose the league:</p>
+                <div class="chooseLeagueNew">
+                    <select class="form-control" id="leagueString" name="leagueString">
+                        {{#leagues}}
+                            <option>{{leagueName}}</option>
+                        {{/leagues}}    
+                    </select>
+                </div>
+                <div class="sendModifyButton">
+                    <input type="submit" value="Apply changes"/>
+                </div>
+            </form>
+{{>footer}}

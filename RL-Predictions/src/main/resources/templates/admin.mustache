@@ -1,4 +1,4 @@
-{{>header}}
+{{>headerLong}}
 		<div class="adminNormalRow clearfix">
             <div class="adminInfo">
                 <p>
@@ -35,6 +35,30 @@
             <div class="adminButton">
                 <form class="homeParticipateButton" action="/resetLeagues">
 				    <button type="submit" class="btn btn-primary btn-lg">Reset league</button>
+			    </form>
+            </div>
+        </div>
+        <div class="adminNormalRow clearfix">
+            <div class="adminInfo">
+                <p>
+                    Click here to add a new team to the competition:
+                </p>
+            </div>
+            <div class="adminButton">
+                <form class="homeParticipateButton" action="/addTeam">
+				    <button type="submit" class="btn btn-primary btn-lg">Add team</button>
+			    </form>
+            </div>
+        </div>
+        <div class="adminNormalRow clearfix">
+            <div class="adminInfo">
+                <p>
+                    Click here to deletea team from RLCS:
+                </p>
+            </div>
+            <div class="adminButton">
+                <form class="homeParticipateButton" action="/deleteTeam">
+				    <button type="submit" class="btn btn-primary btn-lg">Delete Team</button>
 			    </form>
             </div>
         </div>

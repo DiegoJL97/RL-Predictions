@@ -3,6 +3,7 @@ package diegojl97.rlpredictions.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Team {
 	@ManyToOne
 	private League league;
 	
-	@OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "team", fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
 	private List<Player> players = new ArrayList<>();
 	
 	protected Team() {

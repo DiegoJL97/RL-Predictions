@@ -36,12 +36,6 @@ public class AdminController {
 	private LeagueRepository leagueRepository;
 	
 	@Autowired
-	private TeamRepository teamRepository;
-	
-	@Autowired
-	private PlayerRepository playerRepository;
-	
-	@Autowired
 	private PredictionRepository predictionRepository;
 	
 	@Autowired
@@ -212,40 +206,5 @@ public class AdminController {
 		leagueRepository.save(euLeague);
 		return "home";
 	}
-
-	@GetMapping("/modifyTeam/{teamName}")
-	public String modifySpecificTeam(Model model, @PathVariable String teamName) {
-		model.addAttribute(logged, userSession.getLoggedUser());
-		Team team = teamRepository.findByTeamName(teamName);
-		model.addAttribute("team",team);
-		return "modifyTeam";
-	}
-	
-	@PostMapping("/modifyTeam/{teamName}")
-	public String modifySpecificTeamPost(Model model, HttpServletRequest request, @PathVariable String teamName, @RequestParam(name = "teamName") String newTeamName) {
-		model.addAttribute(logged, userSession.getLoggedUser());
-		String[] liValues = request.getParameterValues("liContent");
-		Team team = teamRepository.findByTeamName(teamName);
-		if(!newTeamName.equalsIgnoreCase(teamName)) {
-			team.setTeamName(newTeamName);
-		}
-		int i = 0;
-		List<Player> players = new ArrayList<>();
-		for(Player p: team.getPlayers()) {
-			if(!p.getPlayerName().equals(liValues[i])) {
-				Player newPlayer = new Player(liValues[i],team);
-				players.add(newPlayer);
-				playerRepository.delete(p);
-				playerRepository.save(newPlayer);
-			} else {
-				players.add(p);
-			}
-			i++;
-		}
-		team.setPlayers(players);
-		teamRepository.save(team);
-		return "redirect:/";
-	}
-	
 
 }
