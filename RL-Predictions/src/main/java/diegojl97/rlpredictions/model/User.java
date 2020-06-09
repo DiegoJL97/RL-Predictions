@@ -28,11 +28,11 @@ public class User implements Comparable<User>{
 	private List<String> roles;
 	
 	private boolean madeNAPrediction;
-	@OneToOne(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToOne(fetch=FetchType.EAGER)
 	private Prediction naPrediction;
 	
 	private boolean madeEUPrediction;
-	@OneToOne(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToOne(fetch=FetchType.EAGER)
 	private Prediction euPrediction;
 	
 	private Integer points;

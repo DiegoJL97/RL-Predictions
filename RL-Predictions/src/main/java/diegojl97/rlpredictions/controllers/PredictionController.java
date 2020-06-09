@@ -162,6 +162,7 @@ public class PredictionController {
 	    	default:
 	    		break;
 	    }
+	    predictionRepository.save(prediction);
 	    userSession.setLoggedUser(user);
 	    userRepository.save(user);
 	    model.addAttribute(logged, userSession.getLoggedUser());
@@ -263,9 +264,10 @@ public class PredictionController {
 	    	default:
 	    		break;
 	    }
-	    predictionRepository.delete(pred);
+	    predictionRepository.save(prediction);
 	    userSession.setLoggedUser(user);
 	    userRepository.save(user);
+	    predictionRepository.delete(pred);
 		return "predictionSaved";
 	}
 	
