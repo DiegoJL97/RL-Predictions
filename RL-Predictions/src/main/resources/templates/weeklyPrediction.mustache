@@ -1,0 +1,15 @@
+{{#started}}
+    {{>headerLong}}
+
+    {{>footer}}
+{{/started}}
+{{^started}}
+    {{>header}}
+        <div class="calendarLeaderboard">
+			<img src="images/calendar.png" alt="Calendar">
+		</div>
+		<div class="descriptionLeaderboard">
+			<p>The RLCS has not started! Wait until the first week is ready</p>
+		</div>
+    {{>footer}}
+{{/started}}

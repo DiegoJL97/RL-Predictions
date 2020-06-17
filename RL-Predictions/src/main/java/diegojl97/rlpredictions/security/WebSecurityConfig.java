@@ -32,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/goHome").hasAnyRole("USER","ADMIN");
 		http.authorizeRequests().antMatchers("/leaderboard").hasAnyRole("USER","ADMIN");
 		http.authorizeRequests().antMatchers("/modifyPrediction").hasAnyRole("USER","ADMIN");
+		http.authorizeRequests().antMatchers("/weekly").hasAnyRole("USER","ADMIN");
 		
 		http.authorizeRequests().antMatchers("/startLeague").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/finishLeague").hasAnyRole("ADMIN");
@@ -41,6 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/deleteTeam").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/admin").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/redirectModify").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/addWeek").hasAnyRole("ADMIN");
+		
 		
 
 		// Login form

@@ -24,6 +24,9 @@ public class League {
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "league")
 	private List<Team> teams = new ArrayList<>();
 	
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "league")
+	private List<Week> weeks = new ArrayList<>();
+	
 	protected League() {
 		
 	}
@@ -81,6 +84,14 @@ public class League {
 
 	public void setStarted(boolean started) {
 		this.started = started;
+	}
+
+	public List<Week> getWeeks() {
+		return weeks;
+	}
+
+	public void setWeeks(List<Week> weeks) {
+		this.weeks = weeks;
 	}
 
 }

@@ -46,7 +46,11 @@ public class AdminController {
 	/*
 	 * 
 	 * 		/startLeague --> /finishLeague ---> /resetLeagues ---> /modifyTeam/** ---> /resetLeagues
-	 * 
+	 * 		
+	 * 		/startLeague = 	se utiliza cuando la RLCS ha comenzado, no se pueden hacer mas predicciones generales pero se pueden empezar
+	 * 						a hacer las semanales
+	 * 		/finishLeague = se utiliza cuando la RLCS ha finalizado para calcular todos los puntos y ver predicciones
+	 * 		/resetLeagues = se utiliza 
 	 */
 	
 	@GetMapping("/admin")

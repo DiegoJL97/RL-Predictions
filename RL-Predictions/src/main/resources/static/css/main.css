@@ -45,7 +45,7 @@ body {
 	font-size: 120%;
 	text-decoration: none;
     transition: all .2s ease-in-out;
-    width: 13%;
+    width: 16%;
     display: inline-block;
     text-align: center;
 }
@@ -758,6 +758,28 @@ tr,th {
     float: left;
 }
 
+.adminWeekInfo {
+    width: 60%;
+    height: 100%;
+    float: left;
+    color: white;
+    font-size: 1.3em;
+    padding-left: 8%;
+}
+
+.adminWeekInfo p {
+    width: 50%;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+
+.adminWeekInfo input {
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
 /* FAQs */
 
 .faqDiv {
@@ -828,4 +850,35 @@ tr,th {
 
 .chooseLeagueNew select {
     width: 20%;
+}
+
+/* ADD WEEK */
+
+.regionBox {
+    padding-top: 3%;
+    text-align: center;
+}
+
+.regionBox h3 {
+    color: white;
+    font-size: 200%;
+}
+
+.selectMatches {
+    width: 40%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 2%;
+}
+
+.selectLeft {
+    width: 45%;
+    margin: 0 auto;
+    float: left;
+}
+
+.selectRight {
+    width: 45%;
+    margin: 0 auto;
+    float: right;
 }

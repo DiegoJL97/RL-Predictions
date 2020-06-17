@@ -1,0 +1,43 @@
+{{>headerLong}}
+    <form action="/addWeek" method="post">
+        <div class="regionBox">
+            <h3>Europe matches</h3>
+            {{#euMatches}}
+                <div class="selectMatches clearfix">
+                    <input type="hidden" value="{{euMatches}}" name="liMatchesEU">
+                    <select class="form-control selectLeft" id="{{matchId}}" name="{{matchId}}">
+                        {{#euTeams}}
+                            <option>{{teamName}}</option>
+                        {{/euTeams}}
+                    </select>
+                    <select class="form-control selectRight" id="{{matchId}}" name="{{matchId}}">
+                        {{#euTeams}}
+                            <option>{{teamName}}</option>
+                        {{/euTeams}}
+                    </select>
+                </div>
+            {{/euMatches}}
+        </div>
+        <div class="regionBox">
+            <h3>North America matches</h3>
+            {{#naMatches}}
+                <div class="selectMatches clearfix">
+                    <input type="hidden" value="{{naMatches}}" name="liMatchesNA">
+                    <select class="form-control selectLeft" id="{{matchId}}" name="{{matchId}}">
+                        {{#naTeams}}
+                            <option>{{teamName}}</option>
+                        {{/naTeams}}
+                    </select>
+                    <select class="form-control selectRight" id="{{matchId}}" name="{{matchId}}">
+                        {{#naTeams}}
+                            <option>{{teamName}}</option>
+                        {{/naTeams}}
+                    </select>
+                </div>
+            {{/naMatches}}
+        </div>
+        <div class="sendLeagueFormButton">
+            <input type="submit" value="Add week"/>
+        </div>
+    </form>
+{{>footer}}

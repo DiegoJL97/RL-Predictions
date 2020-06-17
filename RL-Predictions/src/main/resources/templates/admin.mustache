@@ -53,7 +53,7 @@
         <div class="adminNormalRow clearfix">
             <div class="adminInfo">
                 <p>
-                    Click here to deletea team from RLCS:
+                    Click here to delete a team from RLCS:
                 </p>
             </div>
             <div class="adminButton">
@@ -70,6 +70,20 @@
                 </div>
                 <div class="adminButton homeParticipateButton">
                     <button type="submit" class="btn btn-primary btn-lg">Modify</button>
+                </div> 
+            </form>
+        </div>
+        <div class="adminNormalRow clearfix">
+            <form action="/addWeek" method="get">
+                <div class="adminWeekInfo clearfix">
+                    <p>
+                        Fist box: Number of EU matches, second box: number of NA matches.
+                    </p>
+                    <input type="text" name="euMatches">
+                    <input type="text" name="naMatches">
+                </div>
+                <div class="adminButton homeParticipateButton">
+                    <button type="submit" class="btn btn-primary btn-lg">Add Week</button>
                 </div> 
             </form>
         </div>
