@@ -882,3 +882,85 @@ tr,th {
     margin: 0 auto;
     float: right;
 }
+
+/* WEEKLY PREDICTIONS */
+
+.weeklyIntroduction {
+    padding-top: 4%;
+    font-size: 140%;
+}
+
+.weeklyIntroduction p {
+    width: 70%;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.weekViewAllButton{
+    vertical-align: middle;
+    text-align: center;
+    margin-bottom: 0;
+    padding-top: 2%;
+}
+
+.weekViewAllButton button{
+    display: inline-block;
+    text-align: left;
+    background-color: #FA7E0A;
+    border: #FA7E0A;
+    transition: all .2s ease-in-out;
+}
+
+.weekViewAllButton button:hover{
+    background-color: #FA7E0A;
+    border: #FA7E0A;
+    transform: scale(1.3);
+}
+
+.matchesPrediction {
+    padding-top: 1%;
+}
+
+.matchesPrediction h3 {
+    color: white;
+    text-align: center;
+    font-size: 200%;
+}
+
+.teams3 {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.teams3 li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.teams3 li img {
+    float: left;
+}
+
+.teams3 li input {
+    width: 40%;
+}
+
+.versus {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.sendWeeklyButton {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sendWeeklyButton button {
+    margin-top: 0;
+}

@@ -1,6 +1,73 @@
 {{#started}}
     {{>headerLong}}
-
+        <div class="weeklyIntroduction">
+            <p>
+                Cras fermentum neque condimentum nisi accumsan, eget ultrices tortor pellentesque. 
+                Donec sed lectus suscipit, ornare ex at, volutpat turpis. 
+                Vestibulum ac magna a neque molestie ullamcorper eget eget est. 
+                Nulla sed bibendum augue, eget hendrerit sem. 
+                Praesent a eros quis orci pretium malesuada in vitae tortor. Praesent pharetra euismod mattis.
+                Aliquam porta, neque sed lacinia blandit, est eros feugiat ante
+            </p>
+            <form class="weekViewAllButton" action="/viewAllPredictions">
+				<button type="submit" class="btn btn-primary btn-lg">View all predictions</button>
+			</form>
+        </div>
+        <div class="weeklyPrediction">
+            <form action="/weekly" method="post">
+                <div class="matchesPrediction">
+                    <h3>EU matches</h3>
+                    <ol class="teams3 list-group">
+                        {{#euMatches}}
+                            <li class="list-group-item d-flex justify-content-between align-items-center clearfix verticalCenter">
+                            {{#team1}}
+                                <img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
+                                <div class="teamNamePrediction">
+                                    {{teamName}}
+                                </div>
+                            {{/team1}}
+                            <input type="number" name="winsTeam1">
+                            <p class="versus"> vs </p>
+                            <input type="number" name="winsTeam2">
+                            {{#team2}}
+                                <div class="teamNamePrediction">
+                                    {{teamName}}
+                                </div>
+                                <img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
+                            {{/team2}}
+                            </li> 
+                        {{/euMatches}}
+                    </ol>
+                </div>
+                <div class="matchesPrediction">
+                    <h3>NA matches</h3>
+                    <ol class="teams3 list-group">
+                        {{#naMatches}}
+                            <li class="list-group-item d-flex justify-content-between align-items-center clearfix verticalCenter">
+                            {{#team1}}
+                                <img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
+                                <div class="teamNamePrediction">
+                                    {{teamName}}
+                                </div>
+                            {{/team1}}
+                            <input type="number" name="winsTeam1">
+                            <p class="versus"> vs </p>
+                            <input type="number" name="winsTeam2">
+                            {{#team2}}
+                                <div class="teamNamePrediction">
+                                    {{teamName}}
+                                </div>
+                                <img src="images/teamLogos/{{teamName}}-logo.png" alt="{{teamName}} logo">
+                            {{/team2}}
+                            </li> 
+                        {{/naMatches}}
+                    </ol>
+                </div>
+                <div class="sendWeeklyButton">
+                    <input type="submit" value="Apply changes"/>
+                </div>
+            </form>
+        </div>
     {{>footer}}
 {{/started}}
 {{^started}}

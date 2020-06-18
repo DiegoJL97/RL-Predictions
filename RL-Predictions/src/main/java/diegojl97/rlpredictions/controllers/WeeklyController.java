@@ -1,7 +1,6 @@
 package diegojl97.rlpredictions.controllers;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,15 +41,24 @@ public class WeeklyController {
 	
 	@GetMapping("/weekly")
 	public String loadWeeklyPredictions(Model model) {
+		/*
+		 * 			HABRA QUE HACER QUE SI YA HA HECHO LA PREDICCION NO PUEDA VOLVER A HACERLA Y SE MUESTRE LA QUE TIENE
+		 */
 		model.addAttribute("logged", userSession.getLoggedUser());
 		League euLeague = leagueRepository.findByLeagueName("EU");
 		League naLeague = leagueRepository.findByLeagueName("NA");
-		boolean started = euLeague.isStarted() && naLeague.isStarted();
-		/*
-		 * 			AÑADIR A STARTED LA CONDICION DE QUE TODAVIA NO HAYA NINGUNA SEMANA CUANDO SE ACTUALIZE EL MODELO 
-		*/
+		boolean started = (euLeague.isStarted() && naLeague.isStarted()) || (euLeague.getWeeks().size() != 0 && naLeague.getWeeks().size() != 0);
 		model.addAttribute("started", started);
+		if(started) {
+			model.addAttribute("euMatches",euLeague.getWeeks().get(euLeague.getWeeks().size()-1).getMatches());
+			model.addAttribute("naMatches",naLeague.getWeeks().get(naLeague.getWeeks().size()-1).getMatches());
+		}
 		return "weeklyPrediction";
+	}
+	
+	@PostMapping("/weekly")
+	public String postWeeklyPredictions(Model model) {
+		return "redirect:/weekly";
 	}
 	
 	@GetMapping("/addWeek")
@@ -58,51 +66,64 @@ public class WeeklyController {
 		model.addAttribute("logged", userSession.getLoggedUser());
 		model.addAttribute("euTeams",leagueRepository.findByLeagueName("EU").getTeams());
 		model.addAttribute("naTeams",leagueRepository.findByLeagueName("NA").getTeams());
-		ArrayList<MatchList> euMatchesList = new ArrayList<>();
-		ArrayList<MatchList> naMatchesList = new ArrayList<>();
-		for(int i=1; i<=euMatches; i++) {
-			MatchList match = new MatchList("euTeam"+i);
-			euMatchesList.add(match);
-		}
-		for(int i=1; i<=naMatches; i++) {
-			MatchList match = new MatchList("naTeam"+i);
-			naMatchesList.add(match);
-		}
-		model.addAttribute("euMatches",euMatchesList);
-		model.addAttribute("naMatches",naMatchesList);
+		model.addAttribute("euMatches",loadAddWeekAux(euMatches,"EU"));
+		model.addAttribute("naMatches",loadAddWeekAux(naMatches,"NA"));
 		return "addWeek";
+	}
+	
+	public ArrayList<MatchList> loadAddWeekAux(int matches, String leagueName){
+		ArrayList<MatchList> matchesList = new ArrayList<>();
+		for(int i=1; i<=matches; i++) {
+			String teamMatch = "";
+			switch(leagueName) {
+				case "EU":
+					teamMatch = "euTeam";
+					break;
+				case "NA":
+					teamMatch = "naTeam";
+					break;
+				default: 
+					break;
+			}
+			MatchList match = new MatchList(teamMatch+i);
+			matchesList.add(match);
+		}
+		return matchesList;
 	}
 	
 	@PostMapping("/addWeek")
 	public String postAddWeek(Model model, HttpServletRequest request, @RequestParam(name="liMatchesEU") ArrayList<MatchList> matchesEU, @RequestParam(name="liMatchesNA") ArrayList<MatchList> matchesNA) {
 		model.addAttribute("logged", userSession.getLoggedUser());
-		League euLeague = leagueRepository.findByLeagueName("EU");
-		Week euWeek = new Week(euLeague.getWeeks().size()+1,euLeague);
-		weekRepository.save(euWeek);
-		ArrayList<Match> euMatches = new ArrayList<>();
-		for(int i=1; i<=matchesEU.size(); i++) {
-			String[] euTeam = request.getParameterValues("euTeam"+i);
-			Match match = new Match(teamRepository.findByTeamName(euTeam[0]),teamRepository.findByTeamName(euTeam[1]),euWeek);
-			matchRepository.save(match);
-			euMatches.add(match);
-		}
-		euWeek.setMatches(euMatches);
-		euLeague.getWeeks().add(euWeek);
-		leagueRepository.save(euLeague);
-		League naLeague = leagueRepository.findByLeagueName("NA");
-		Week naWeek = new Week(naLeague.getWeeks().size()+1,naLeague);
-		weekRepository.save(naWeek);
-		ArrayList<Match> naMatches = new ArrayList<>();
-		for(int i=1; i<=matchesNA.size(); i++) {
-			String[] naTeam = request.getParameterValues("naTeam"+i);
-			Match match = new Match(teamRepository.findByTeamName(naTeam[0]),teamRepository.findByTeamName(naTeam[1]),naWeek);
-			matchRepository.save(match);
-			naMatches.add(match);
-		}
-		naWeek.setMatches(naMatches);
-		naLeague.getWeeks().add(naWeek);
-		leagueRepository.save(naLeague);
+		addWeekAux("EU",request,matchesEU);
+		addWeekAux("NA",request,matchesNA);
 		return "redirect:/";
+	}
+	
+	public void addWeekAux(String leagueName, HttpServletRequest request, ArrayList<MatchList> matchesNumber) {
+		League league = leagueRepository.findByLeagueName(leagueName);
+		Week week = new Week(league.getWeeks().size()+1,league);
+		weekRepository.save(week);
+		ArrayList<Match> matches = new ArrayList<>();
+		for(int i=1; i<=matchesNumber.size(); i++) {
+			String teamMatch = "";
+			switch(league.getLeagueName()) {
+				case "EU":
+					teamMatch = "euTeam";
+					break;
+				case "NA":
+					teamMatch = "naTeam";
+					break;
+				default: 
+					break;
+			}
+			String[] team = request.getParameterValues(teamMatch+i);
+			Match match = new Match(teamRepository.findByTeamName(team[0]),teamRepository.findByTeamName(team[1]),week);
+			matchRepository.save(match);
+			matches.add(match);
+		}
+		week.setMatches(matches);
+		league.getWeeks().add(week);
+		leagueRepository.save(league);
 	}
 	
 }
